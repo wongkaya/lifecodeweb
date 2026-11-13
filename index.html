@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0B1324">
+    <title>Tes Gaya Kerja &amp; Kesejahteraan Karyawan | LifeCode</title>
+    <meta name="description" content="Asesmen refleksi 20 situasi keseharian untuk memetakan gaya kerja & kesejahteraan mental karyawan. Terintegrasi HRIS, hasil instan.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0B1324;
+            --ink-2: #334155;
+            --ink-3: #64748B;
+            --ink-4: #94A3B8;
+            --bg: #F7F8FC;
+            --surface: #fff;
+            --surface-2: #EEF1F8;
+            --line: #E2E7F1;
+            --line-2: #CBD3E3;
+            --navy: #0B1324;
+            --navy-2: #131D38;
+            --indigo: #2F44C8;
+            --indigo-h: #2535A8;
+            --indigo-soft: #E9ECFB;
+            --mint: #14B8A6;
+            --mint-d: #0F8F82;
+            --mint-soft: #E3F6F3;
+            --mint-l: #7EE0D3;
+            --amber: #B7791F;
+            --amber-soft: #FEF6E7;
+            --danger: #B91C1C;
+            --danger-soft: #FEF2F2;
+            --danger-line: #FECACA;
+            --r: 12px;
+            --r-lg: 18px;
+            --r-xl: 24px;
+            --f: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            --fm: 'JetBrains Mono', ui-monospace, monospace;
+            --sh-card: 0 32px 64px -24px rgba(11, 19, 36, .18);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--f);
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100dvh
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        button {
+            font-family: inherit
+        }
+
+        svg {
+            display: block
+        }
+
+        .wrap {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 20px
+        }
+
+        /* ============ NAV ============ */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(11, 19, 36, .92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .nav-in {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px
+        }
+
+        .brand {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: -.03em;
+            color: #fff;
+            text-decoration: none;
+            white-space: nowrap
+        }
+
+        .brand i {
+            font-style: normal;
+            color: var(--mint-l)
+        }
+
+        .nav-tag {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--mint-l);
+            background: rgba(20, 184, 166, .12);
+            border: 1px solid rgba(126, 224, 211, .25);
+            border-radius: 100px;
+            padding: 5px 10px;
+            white-space: nowrap;
+        }
+
+        /* ============ HERO (CENTER) ============ */
+        .hero {
+            background:
+                radial-gradient(500px 280px at 85% -10%, rgba(47, 68, 200, .45), transparent 60%),
+                radial-gradient(440px 260px at 0% 100%, rgba(20, 184, 166, .18), transparent 60%),
+                var(--navy);
+            color: #fff;
+            padding: 48px 0 84px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: .02em;
+            color: var(--mint-l);
+            background: rgba(20, 184, 166, .12);
+            border: 1px solid rgba(126, 224, 211, .25);
+            margin-bottom: 18px;
+        }
+
+        .pill::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--mint-l)
+        }
+
+        .hero h1 {
+            font-size: clamp(26px, 5.6vw, 34px);
+            line-height: 1.12;
+            font-weight: 800;
+            letter-spacing: -.032em;
+            text-wrap: balance;
+            margin-bottom: 0;
+            max-width: 420px;
+        }
+
+        .hero h1 span {
+            color: var(--mint-l)
+        }
+
+        .hero-facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(255, 255, 255, .12);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .hero-facts div {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            min-width: 0;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-facts b {
+            font-family: var(--fm);
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -.03em;
+            line-height: 1;
+        }
+
+        .hero-facts span {
+            font-size: 11.5px;
+            color: rgba(255, 255, 255, .6);
+            line-height: 1.35
+        }
+
+        /* ============ QUIZ SHELL ============ */
+        .quiz-shell {
+            max-width: 500px;
+            margin: -44px auto 0;
+            padding: 0 20px 72px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quiz-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--r-xl);
+            box-shadow: var(--sh-card);
+            overflow: hidden;
+        }
+
+        /* progress header */
+        .quiz-progress {
+            padding: 16px 22px 14px;
+            border-bottom: 1px solid var(--line);
+            background: var(--surface);
+        }
+
+        .prog-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--ink-3);
+            margin-bottom: 9px;
+        }
+
+        .prog-info b {
+            font-family: var(--fm);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--indigo);
+        }
+
+        .pb {
+            height: 5px;
+            background: var(--surface-2);
+            border-radius: 100px;
+            overflow: hidden
+        }
+
+        .pb i {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--indigo), var(--mint));
+            border-radius: 100px;
+            transition: width .45s cubic-bezier(.4, 0, .2, 1);
+            width: 0;
+        }
+
+        /* form body */
+        .quiz-body {
+            padding: 26px 22px 24px
+        }
+
+        /* ============ STEP PANES ============ */
+        .step-pane {
+            display: none
+        }
+
+        .step-pane.active {
+            display: block;
+            animation: up .3s ease
+        }
+
+        @keyframes up {
+            from {
+                opacity: 0;
+                transform: translateY(6px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .kicker {
+            display: inline-block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .11em;
+            text-transform: uppercase;
+            color: var(--indigo);
+            margin-bottom: 12px;
+        }
+
+        .step-pane h2 {
+            font-size: clamp(19px, 4vw, 22px);
+            font-weight: 800;
+            letter-spacing: -.025em;
+            line-height: 1.25;
+            margin-bottom: 8px;
+            text-wrap: balance;
+        }
+
+        .step-pane .sub {
+            font-size: 13.5px;
+            color: var(--ink-3);
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        /* scenario card */
+        .story {
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--indigo);
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            font-size: 13.5px;
+            color: var(--ink-2);
+            line-height: 1.65;
+        }
+
+        /* ============ FORM FIELDS ============ */
+        .form-group {
+            margin-bottom: 16px
+        }
+
+        .form-group label.l {
+            display: block;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ink-2);
+            margin-bottom: 7px;
+            line-height: 1.4;
+        }
+
+        .field {
+            width: 100%;
+            padding: 11px 13px;
+            background: var(--surface);
+            border: 1.5px solid var(--line-2);
+            border-radius: 9px;
+            font: inherit;
+            font-size: 14.5px;
+            font-weight: 500;
+            color: var(--ink);
+            transition: border-color .15s, box-shadow .15s, background .15s;
+        }
+
+        .field::placeholder {
+            color: var(--ink-4);
+            font-weight: 400
+        }
+
+        .field:hover {
+            border-color: var(--indigo)
+        }
+
+        .field:focus {
+            outline: 0;
+            border-color: var(--indigo);
+            box-shadow: 0 0 0 3px rgba(47, 68, 200, .14);
+        }
+
+        .field[readonly] {
+            background: var(--surface-2);
+            color: var(--ink-2);
+            cursor: not-allowed;
+        }
+
+        .field[readonly]:hover {
+            border-color: var(--line-2)
+        }
+
+        select.field {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 13px center;
+            padding-right: 36px;
+        }
+
+        /* ============ OPTION CARDS ============ */
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 6px
+        }
+
+        .option-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 13px 15px;
+            background: var(--surface);
+            border: 1.5px solid var(--line);
+            border-radius: 11px;
+            cursor: pointer;
+            transition: .18s ease;
+            position: relative;
+        }
+
+        .option-card:hover {
+            border-color: var(--line-2);
+            background: var(--surface-2);
+        }
+
+        .option-card.selected {
+            background: var(--indigo-soft);
+            border-color: var(--indigo);
+            box-shadow: 0 0 0 3px rgba(47, 68, 200, .1);
+        }
+
+        .option-card input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 1px;
+            border: 2px solid var(--line-2);
+            border-radius: 50%;
+            background: var(--surface);
+            cursor: pointer;
+            position: relative;
+            transition: .15s ease;
+        }
+
+        .option-card:hover input[type="radio"] {
+            border-color: var(--indigo)
+        }
+
+        .option-card.selected input[type="radio"] {
+            border-color: var(--indigo);
+            background: var(--indigo);
+        }
+
+        .option-card.selected input[type="radio"]::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: var(--surface);
+        }
+
+        .option-card .opt-text {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        /* ============ ERROR ============ */
+        .err-msg {
+            display: none;
+            background: var(--danger-soft);
+            color: var(--danger);
+            border: 1px solid var(--danger-line);
+            border-radius: 9px;
+            padding: 11px 14px;
+            font-size: 12.5px;
+            font-weight: 500;
+            margin-top: 14px;
+            line-height: 1.5;
+        }
+
+        /* ============ BUTTONS ============ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 44px;
+            padding: 11px 20px;
+            border-radius: 11px;
+            border: 1px solid transparent;
+            font-size: 14.5px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: .18s;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid rgba(47, 68, 200, .4);
+            outline-offset: 2px
+        }
+
+        .btn:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+            transform: none
+        }
+
+        .btn-primary {
+            background: var(--indigo);
+            color: #fff
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--indigo-h);
+            transform: translateY(-1px)
+        }
+
+        .btn-line {
+            background: transparent;
+            color: var(--ink);
+            border-color: var(--line-2)
+        }
+
+        .btn-line:hover:not(:disabled) {
+            background: var(--surface)
+        }
+
+        .btn-block {
+            width: 100%
+        }
+
+        .btn-lg {
+            min-height: 50px;
+            padding: 13px 26px;
+            font-size: 15px;
+            border-radius: 12px
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 9px;
+            margin-top: 26px;
+            padding-top: 20px;
+            border-top: 1px solid var(--line)
+        }
+
+        .nav-buttons .btn {
+            flex: 1
+        }
+
+        .nav-buttons .btn-sec {
+            flex: 0 0 100px
+        }
+
+        /* ============ PREVIEW ============ */
+        #submit-preview {
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 4px 16px;
+            margin-bottom: 16px;
+        }
+
+        .preview-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            padding: 11px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .preview-row:last-child {
+            border-bottom: 0
+        }
+
+        .preview-label {
+            font-size: 12.5px;
+            font-weight: 500;
+            color: var(--ink-3);
+            flex-shrink: 0;
+        }
+
+        .preview-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink);
+            text-align: right;
+            word-break: break-word;
+        }
+
+        .preview-value.accent {
+            color: var(--indigo);
+            font-family: var(--fm);
+            font-size: 12.5px;
+        }
+
+        /* ============ NOTE ============ */
+        .note-card {
+            background: var(--indigo-soft);
+            border-left: 3px solid var(--indigo);
+            border-radius: 9px;
+            padding: 12px 15px;
+            margin-bottom: 16px;
+            font-size: 12.5px;
+            color: #1E2C7A;
+            line-height: 1.65;
+        }
+
+        .note-card b {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--indigo);
+            margin-bottom: 5px;
+        }
+
+        /* ============ SUCCESS ============ */
+        .success-card {
+            text-align: center;
+            padding: 30px 16px
+        }
+
+        .success-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 18px;
+            background: var(--mint-soft);
+            color: var(--mint-d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        .success-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -.02em;
+            margin-bottom: 9px;
+        }
+
+        .success-card p {
+            font-size: 13.5px;
+            color: var(--ink-3);
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .success-card .success-meta {
+            font-size: 12px;
+            color: var(--ink-4);
+            margin-top: 14px;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--navy);
+            color: #fff;
+            padding: 40px 0 28px;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+            text-align: center;
+            align-items: center;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        .footer-brand .brand {
+            display: inline-block;
+            margin-bottom: 8px
+        }
+
+        .footer-desc {
+            font-size: 12.5px;
+            color: rgba(255, 255, 255, .55);
+            line-height: 1.65;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 8px 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: rgba(255, 255, 255, .68);
+            transition: .15s;
+        }
+
+        .footer-links a:hover {
+            color: #fff
+        }
+
+        .footer-legal {
+            padding-top: 20px;
+            font-size: 11.5px;
+            color: rgba(255, 255, 255, .45);
+            line-height: 1.75;
+            text-align: center;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media(max-width:500px) {
+            .wrap {
+                padding: 0 16px
+            }
+
+            .quiz-shell {
+                padding: 0 12px 56px;
+                margin-top: -36px
+            }
+
+            .quiz-card {
+                border-radius: 20px
+            }
+
+            .quiz-progress {
+                padding: 14px 20px 12px
+            }
+
+            .quiz-body {
+                padding: 22px 20px 20px
+            }
+
+            .option-card {
+                padding: 12px 14px
+            }
+
+            .step-pane .sub {
+                font-size: 13px
+            }
+
+            .story {
+                padding: 13px 15px;
+                font-size: 13px
+            }
+
+            .hero {
+                padding: 40px 0 76px
+            }
+
+            .nav-buttons {
+                flex-direction: column-reverse
+            }
+
+            .nav-buttons .btn-sec {
+                flex: 1;
+                width: 100%
+            }
+        }
+
+        @media(max-width:400px) {
+            .hero h1 {
+                font-size: 24px
+            }
+
+            .hero-facts {
+                gap: 10px
+            }
+
+            .hero-facts b {
+                font-size: 19px
+            }
+
+            .hero-facts span {
+                font-size: 10.5px
+            }
+
+            .step-pane h2 {
+                font-size: 18px
+            }
+
+            .option-card .opt-text {
+                font-size: 13px
+            }
+
+            .quiz-body {
+                padding: 20px 18px 18px
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important
+            }
+
+            html {
+                scroll-behavior: auto
+            }
+
+            .step-pane.active {
+                animation: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="wrap nav-in">
+            <a href="index.html" class="brand">Life<i>Code</i></a>
+            <span class="nav-tag">HR Assessment</span>
+        </div>
+    </nav>
+
+    <!-- HERO (CENTER) -->
+    <header class="hero">
+        <div class="wrap hero-inner">
+            <span class="pill">HR Assessment · Emotional Check-in</span>
+            <h1>Kenali <span>pola kerja</span> yang membentuk kinerja Anda.</h1>
+            <div class="hero-facts">
+                <div><b>20</b><span>situasi keseharian</span></div>
+                <div><b>5 mnt</b><span>durasi asesmen</span></div>
+                <div><b>12</b><span>pola pikir</span></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- QUIZ -->
+    <main class="quiz-shell">
+        <div class="quiz-card">
+            <div class="quiz-progress">
+                <div class="prog-info">
+                    <span id="step-counter">Langkah 1 dari 21</span>
+                    <b id="progress-percent">0%</b>
+                </div>
+                <div class="pb"><i id="progress-fill"></i></div>
+            </div>
+
+            <form id="quiz-form" class="quiz-body" onsubmit="return false;">
+
+                <!-- STEP 1 : DATA KARYAWAN -->
+                <div class="step-pane active" data-step="1">
+                    <span class="kicker">Langkah Awal</span>
+                    <h2>Data Diri Karyawan</h2>
+                    <p class="sub">Lengkapi data dasar sebelum memulai asesmen gaya kerja &amp; kesejahteraan.</p>
+
+                    <div class="form-group">
+                        <label class="l" for="employee_name">Nama Lengkap Karyawan</label>
+                        <input class="field" type="text" id="employee_name" placeholder="Contoh: Andi Pratama" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="l" for="employee_birthdate">Tanggal Lahir</label>
+                        <input class="field" type="date" id="employee_birthdate" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="l" for="employee_age">Usia (otomatis)</label>
+                        <input class="field" type="text" id="employee_age" placeholder="Akan terisi otomatis" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label class="l" for="department">Departemen</label>
+                        <select class="field" id="department">
+                            <option value="Marketing">Marketing &amp; Communications</option>
+                            <option value="Finance">Finance &amp; Accounting</option>
+                            <option value="Human Resources">Human Resources</option>
+                            <option value="IT">Information Technology</option>
+                            <option value="Operations">Operations</option>
+                            <option value="Sales">Sales &amp; Business Development</option>
+                            <option value="Customer Service">Customer Service</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="l" for="phone">Nomor Telepon <span style="color:var(--ink-4);font-weight:500;">(untuk identifikasi)</span></label>
+                        <input class="field" type="tel" id="phone" inputmode="tel" placeholder="Contoh: 0812-3456-7890" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="l" for="position">Jabatan</label>
+                        <input class="field" type="text" id="position" placeholder="Contoh: Marketing Executive" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="l" for="join_year">Tahun Bergabung</label>
+                        <input class="field" type="number" id="join_year" placeholder="Contoh: 2020" min="1970" max="2100" step="1" inputmode="numeric" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="l" for="tenure">Masa Kerja (otomatis)</label>
+                        <input class="field" type="text" id="tenure" placeholder="Akan terisi otomatis" readonly required>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="step-pane" data-step="2">
+                    <span class="kicker">Skenario 1 · Storytelling</span>
+                    <h2>Terjebak Macet Saat Terlambat</h2>
+                    <div class="story">Pukul 7 pagi, kamu sudah berangkat untuk acara penting. Tiba-tiba jalanan macet total karena kecelakaan. Kamu sudah janji datang tepat waktu, tetapi waktu terus berjalan dan kamu masih terjebak di jalan.</div>
+                    <div class="form-group">
+                        <label class="l">2A. Apa yang paling kuat kamu rasakan?</label>
+                        <div class="options-grid" data-name="emo_1">
+                            <label class="option-card"><input type="radio" name="emo_1" value="Cemas"><span class="opt-text">Takut tidak sampai tepat waktu</span></label>
+                            <label class="option-card"><input type="radio" name="emo_1" value="Bingung"><span class="opt-text">Tidak tahu harus cari jalan alternatif mana</span></label>
+                            <label class="option-card"><input type="radio" name="emo_1" value="Kesal"><span class="opt-text">Sudah buru-buru tapi tetap macet</span></label>
+                            <label class="option-card"><input type="radio" name="emo_1" value="Pasrah"><span class="opt-text">Merasa tak berdaya</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="l">2B. Bagaimana reaksi tubuh atau mentalmu setelahnya?</label>
+                        <div class="options-grid" data-name="resp_1">
+                            <label class="option-card"><input type="radio" name="resp_1" value="Stres"><span class="opt-text">Sangat tertekan</span></label>
+                            <label class="option-card"><input type="radio" name="resp_1" value="Pasrah"><span class="opt-text">Menunggu selesai tanpa strategi</span></label>
+                            <label class="option-card"><input type="radio" name="resp_1" value="Tenang"><span class="opt-text">Tarik napas, cari jalan alternatif, kabari tujuan</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="step-pane" data-step="3">
+                    <span class="kicker">Skenario 2 · Storytelling</span>
+                    <h2>Lupa Materi Saat Berbicara di Acara</h2>
+                    <div class="story">Kamu diminta memberikan sambutan di acara keluarga besar. Saat berdiri di depan semua orang, tiba-tiba pikiranmu kosong dan lupa apa yang ingin disampaikan. Semua mata tertuju padamu.</div>
+                    <div class="form-group">
+                        <label class="l">3A. Apa yang paling mendominasi saat itu?</label>
+                        <div class="options-grid" data-name="emo_2">
+                            <label class="option-card"><input type="radio" name="emo_2" value="Malu"><span class="opt-text">Merasa gagal di depan orang banyak</span></label>
+                            <label class="option-card"><input type="radio" name="emo_2" value="Marah"><span class="opt-text">Kesal pada diri sendiri / situasi</span></label>
+                            <label class="option-card"><input type="radio" name="emo_2" value="Panik"><span class="opt-text">Tidak tahu harus berbuat apa</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="l">3B. Respons spontanmu menghadapi situasi ini?</label>
+                        <div class="options-grid" data-name="resp_2">
+                            <label class="option-card"><input type="radio" name="resp_2" value="Menyerah"><span class="opt-text">Hilang kendali</span></label>
+                            <label class="option-card"><input type="radio" name="resp_2" value="Tegas"><span class="opt-text">Akui, ambil napas, lanjutkan dengan improvisasi</span></label>
+                            <label class="option-card"><input type="radio" name="resp_2" value="Marah"><span class="opt-text">Langsung salahkan situasi / orang lain</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="step-pane" data-step="4">
+                    <span class="kicker">Skenario 3 · Storytelling</span>
+                    <h2>Teman Mendapat Kabar Baik</h2>
+                    <div class="story">Teman dekatmu baru saja mendapat kabar baik: diterima di kampus impian, mendapat pekerjaan idaman, atau menikah. Kamu ikut senang, tetapi di dalam hati ada rasa yang sulit dijelaskan. Media sosial penuh ucapan selamat untuknya.</div>
+                    <div class="form-group">
+                        <label class="l">4A. Jujur di dalam hati, apa yang kamu rasakan?</label>
+                        <div class="options-grid" data-name="emo_3">
+                            <label class="option-card"><input type="radio" name="emo_3" value="Iri"><span class="opt-text">Menginginkan hal yang sama</span></label>
+                            <label class="option-card"><input type="radio" name="emo_3" value="Sedih"><span class="opt-text">Merasa tertinggal</span></label>
+                            <label class="option-card"><input type="radio" name="emo_3" value="Tersinggung"><span class="opt-text">Merasa tidak dihargai lingkungan</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="l">4B. Bagaimana pengaruhnya terhadap sikapmu?</label>
+                        <div class="options-grid" data-name="resp_3">
+                            <label class="option-card"><input type="radio" name="resp_3" value="Membandingkan"><span class="opt-text">Mengeluh &amp; menyalahkan keadaan</span></label>
+                            <label class="option-card"><input type="radio" name="resp_3" value="Menarik Diri"><span class="opt-text">Menutup diri, menjauh dari teman</span></label>
+                            <label class="option-card"><input type="radio" name="resp_3" value="Refleksi"><span class="opt-text">Sadar tiap orang punya jalannya sendiri</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 5 -->
+                <div class="step-pane" data-step="5">
+                    <span class="kicker">Skenario 4 · Storytelling</span>
+                    <h2>Masalah Keluarga Berkepanjangan</h2>
+                    <div class="story">Ada masalah keluarga yang sudah berlangsung lama dan belum juga selesai. Semua pihak sudah lelah. Kamu merasa cemas, lelah, dan tidak tahu harus bagaimana lagi.</div>
+                    <div class="form-group">
+                        <label class="l">5A. Apa yang memuncak di dalam diri?</label>
+                        <div class="options-grid" data-name="emo_4">
+                            <label class="option-card"><input type="radio" name="emo_4" value="Frustrasi"><span class="opt-text">Geram karena tak kunjung usai</span></label>
+                            <label class="option-card"><input type="radio" name="emo_4" value="Bersalah"><span class="opt-text">Menyalahkan diri sendiri</span></label>
+                            <label class="option-card"><input type="radio" name="emo_4" value="Marah"><span class="opt-text">Ingin meluapkan kekesalan</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="l">5B. Kondisimu saat masalah akhirnya selesai juga?</label>
+                        <div class="options-grid" data-name="resp_4">
+                            <label class="option-card"><input type="radio" name="resp_4" value="Lelah"><span class="opt-text">Lemas dan lunglai</span></label>
+                            <label class="option-card"><input type="radio" name="resp_4" value="Syukur"><span class="opt-text">Bersyukur meski banyak kendala</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 6 -->
+                <div class="step-pane" data-step="6">
+                    <span class="kicker">Skenario 5 · Storytelling</span>
+                    <h2>Dipuji di Acara Keluarga</h2>
+                    <div class="story">Di acara keluarga besar, kamu dipuji di depan semua orang karena prestasi atau kebaikanmu. Semua orang menatapmu dengan bangga dan mengucapkan selamat.</div>
+                    <div class="form-group">
+                        <label class="l">6A. Apa yang muncul di dalam perasaanmu?</label>
+                        <div class="options-grid" data-name="emo_5">
+                            <label class="option-card"><input type="radio" name="emo_5" value="Syukur"><span class="opt-text">Tersentuh luar biasa</span></label>
+                            <label class="option-card"><input type="radio" name="emo_5" value="Bangga"><span class="opt-text">Terpesona pada diri sendiri</span></label>
+                            <label class="option-card"><input type="radio" name="emo_5" value="Bahagia"><span class="opt-text">Hati merasa hangat</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="l">6B. Dampak kejadian ini pada sikapmu?</label>
+                        <div class="options-grid" data-name="resp_5">
+                            <label class="option-card"><input type="radio" name="resp_5" value="Optimis"><span class="opt-text">Makin percaya diri &amp; termotivasi</span></label>
+                            <label class="option-card"><input type="radio" name="resp_5" value="Empati"><span class="opt-text">Makin hangat &amp; suportif ke orang lain</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 7 -->
+                <div class="step-pane" data-step="7">
+                    <span class="kicker">Skenario 6 · Storytelling</span>
+                    <h2>Menemukan Barang Kenangan Lama</h2>
+                    <div class="story">Saat merapikan lemari, kamu menemukan album foto lama dan barang-barang kenangan dari masa lalu. Kamu teringat waktu yang cepat berlalu, mimpi-mimpi awal, dan momen yang mungkin terlewat.</div>
+                    <div class="form-group">
+                        <label class="l">7A. Apa yang menyergap hatimu?</label>
+                        <div class="options-grid" data-name="emo_6">
+                            <label class="option-card"><input type="radio" name="emo_6" value="Nostalgia"><span class="opt-text">Teringat kenangan manis</span></label>
+                            <label class="option-card"><input type="radio" name="emo_6" value="Menyesal"><span class="opt-text">Merasa kurang optimal</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="l">7B. Sikap membekas setelah menutup album itu?</label>
+                        <div class="options-grid" data-name="resp_6">
+                            <label class="option-card"><input type="radio" name="resp_6" value="Refleksi"><span class="opt-text">Bertekad lebih fokus &amp; hadir ke depannya</span></label>
+                            <label class="option-card"><input type="radio" name="resp_6" value="Melamun"><span class="opt-text">Tenggelam dalam pikiran</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 8 -->
+                <div class="step-pane" data-step="8">
+                    <span class="kicker">Skenario 7 · Storytelling</span>
+                    <h2>Tawaran Pindah Kota / Beasiswa</h2>
+                    <div class="story">Kamu mendapat tawaran beasiswa atau pekerjaan di kota lain dengan fasilitas jauh lebih baik, tetapi harus meninggalkan keluarga dan teman-teman. Jawaban harus diberikan besok pagi.</div>
+                    <div class="form-group">
+                        <label class="l">8A. Apa yang bertarung di kepalamu?</label>
+                        <div class="options-grid" data-name="emo_7">
+                            <label class="option-card"><input type="radio" name="emo_7" value="Ragu"><span class="opt-text">Takut salah mengambil keputusan</span></label>
+                            <label class="option-card"><input type="radio" name="emo_7" value="Bersalah"><span class="opt-text">Takut meninggalkan zona nyaman</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="l">8B. Bagaimana caramu menghadapinya?</label>
+                        <div class="options-grid" data-name="resp_7">
+                            <label class="option-card"><input type="radio" name="resp_7" value="Stres"><span class="opt-text">Cemas berlebihan sampai tak bisa tidur</span></label>
+                            <label class="option-card"><input type="radio" name="resp_7" value="Berani"><span class="opt-text">Menimbang prioritas dengan tenang</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 9 -->
+                <div class="step-pane" data-step="9">
+                    <span class="kicker">Skenario 8 · Storytelling</span>
+                    <h2>Meraih Pencapaian Pribadi</h2>
+                    <div class="story">Kamu akhirnya meraih pencapaian yang lama kamu impikan: lulus ujian penting, menang lomba, atau berhasil menyelesaikan proyek pribadi. Orang-orang di sekitarmu memberikan selamat dan menatapmu dengan bangga.</div>
+                    <div class="form-group">
+                        <label class="l">9A. Apa yang meledak di dalam diri?</label>
+                        <div class="options-grid" data-name="emo_8">
+                            <label class="option-card"><input type="radio" name="emo_8" value="Bangga"><span class="opt-text">Merasa dihargai sepenuhnya</span></label>
+                            <label class="option-card"><input type="radio" name="emo_8" value="Lega"><span class="opt-text">Beban usaha terbayar tuntas</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="l">9B. Bagaimana kondisi mentalmu setelahnya?</label>
+                        <div class="options-grid" data-name="resp_8">
+                            <label class="option-card"><input type="radio" name="resp_8" value="Optimis"><span class="opt-text">Makin semangat berkontribusi</span></label>
+                            <label class="option-card"><input type="radio" name="resp_8" value="Rendah Hati"><span class="opt-text">Tetap membumi</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 10 -->
+                <div class="step-pane" data-step="10">
+                    <span class="kicker">Keseharian · 1 dari 12</span>
+                    <h2>Bangun Kesiangan</h2>
+                    <p class="sub">Pilih reaksi atau pikiran spontan yang paling menggambarkan dirimu.</p>
+                    <div class="story">Alarm tidak berbunyi dan kamu bangun terlambat 1 jam dari jadwal, padahal ada janji penting pagi ini.</div>
+                    <div class="options-grid" data-name="mm_1">
+                        <label class="option-card"><input type="radio" name="mm_1" value="healthy"><span class="opt-text">Tarik napas, kabari pihak terkait, lalu percepat persiapan dengan prioritas.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_1" value="generalization"><span class="opt-text">"Aku memang tidak pernah bisa bangun tepat waktu."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_1" value="deletion"><span class="opt-text">Diamkan saja, berangkat seadanya, biarkan nanti bagaimana.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_1" value="distortion"><span class="opt-text">"Alarm ini sengaja dibuat untuk membuatku kacau."</span></label>
+                    </div>
+                </div>
+
+                <!-- STEP 11 -->
+                <div class="step-pane" data-step="11">
+                    <span class="kicker">Keseharian · 2 dari 12</span>
+                    <h2>Antrean Panjang di Kasir</h2>
+                    <div class="story">Kamu sudah mengantre 30 menit di kasir supermarket, tetapi antrean belum juga maju karena mesin kasir error.</div>
+                    <div class="options-grid" data-name="mm_2">
+                        <label class="option-card"><input type="radio" name="mm_2" value="generalization"><span class="opt-text">"Antrean di sini memang selalu begini, tidak pernah efisien."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_2" value="healthy"><span class="opt-text">Cek apakah ada kasir lain, manfaatkan waktu, tetap sabar menunggu.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_2" value="deletion"><span class="opt-text">Tinggalkan barang, keluar tanpa belanja.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_2" value="distortion"><span class="opt-text">"Kasirnya sengaja memperlambat untuk membuatku kesal."</span></label>
+                    </div>
+                </div>
+
+                <!-- STEP 12 -->
+                <div class="step-pane" data-step="12">
+                    <span class="kicker">Keseharian · 3 dari 12</span>
+                    <h2>Kuota Internet Habis</h2>
+                    <div class="story">Di tengah momen penting, kuota internetmu habis dan tidak bisa diisi saat itu juga.</div>
+                    <div class="options-grid" data-name="mm_3">
+                        <label class="option-card"><input type="radio" name="mm_3" value="distortion"><span class="opt-text">"Pasti sengaja dibuat begini supaya aku kacau."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_3" value="generalization"><span class="opt-text">"Kuotaku memang selalu habis di waktu yang salah."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_3" value="healthy"><span class="opt-text">Cari WiFi terdekat, minta bantuan, tunda hal yang tidak mendesak.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_3" value="deletion"><span class="opt-text">Matikan HP, biarkan semuanya terbengkalai.</span></label>
+                    </div>
+                </div>
+
+                <!-- STEP 13 -->
+                <div class="step-pane" data-step="13">
+                    <span class="kicker">Keseharian · 4 dari 12</span>
+                    <h2>Barang Penting Hilang</h2>
+                    <div class="story">Dompet atau kunci rumahmu tidak ditemukan di tempat biasa. Kamu mulai panik karena harus segera keluar.</div>
+                    <div class="options-grid" data-name="mm_4">
+                        <label class="option-card"><input type="radio" name="mm_4" value="generalization"><span class="opt-text">"Aku memang selalu kehilangan barang."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_4" value="distortion"><span class="opt-text">"Pasti ada yang sengaja menyembunyikannya."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_4" value="healthy"><span class="opt-text">Tenang, telusuri lagi tempat terakhir, minta bantuan mencari.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_4" value="deletion"><span class="opt-text">Biarkan saja, nanti juga ketemu sendiri.</span></label>
+                    </div>
+                </div>
+
+                <!-- STEP 14 -->
+                <div class="step-pane" data-step="14">
+                    <span class="kicker">Keseharian · 5 dari 12</span>
+                    <h2>Tetangga Berisik</h2>
+                    <div class="story">Tetangga mengadakan acara dengan suara keras hingga malam, padahal kamu butuh istirahat.</div>
+                    <div class="options-grid" data-name="mm_5">
+                        <label class="option-card"><input type="radio" name="mm_5" value="distortion"><span class="opt-text">"Mereka sengaja mengganggu ketenanganku."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_5" value="generalization"><span class="opt-text">"Di sini memang tidak pernah ada ketenangan."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_5" value="healthy"><span class="opt-text">Tegur dengan sopan, cari kesepakatan waktu, pakai penutup telinga bila perlu.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_5" value="deletion"><span class="opt-text">Diamkan saja, pendam sendiri, tidak tidur semalaman.</span></label>
+                    </div>
+                </div>
+
+                <!-- STEP 15 -->
+                <div class="step-pane" data-step="15">
+                    <span class="kicker">Keseharian · 6 dari 12</span>
+                    <h2>Pesanan Makanan Salah</h2>
+                    <div class="story">Makanan yang kamu pesan datang, tetapi pesanannya salah dan kamu sudah sangat lapar.</div>
+                    <div class="options-grid" data-name="mm_6">
+                        <label class="option-card"><input type="radio" name="mm_6" value="distortion"><span class="opt-text">"Restoran ini sengaja mengacaukan pesananku."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_6" value="healthy"><span class="opt-text">Hubungi penjual dengan sopan, minta solusi, atau nikmati bila memungkinkan.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_6" value="deletion"><span class="opt-text">Terima saja tanpa komplain, lalu kesal sendiri.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_6" value="generalization"><span class="opt-text">"Pesananku memang selalu salah."</span></label>
+                    </div>
+                </div>
+
+                <!-- STEP 16 -->
+                <div class="step-pane" data-step="16">
+                    <span class="kicker">Keseharian · 7 dari 12</span>
+                    <h2>Hujan Deras Saat Mau Keluar</h2>
+                    <div class="story">Kamu sudah siap berangkat, tiba-tiba hujan deras turun dan kamu tidak membawa payung.</div>
+                    <div class="options-grid" data-name="mm_7">
+                        <label class="option-card"><input type="radio" name="mm_7" value="deletion"><span class="opt-text">"Terserah, yang penting berangkat, basah juga tidak masalah."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_7" value="generalization"><span class="opt-text">"Cuaca di sini memang selalu tidak mendukung."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_7" value="healthy"><span class="opt-text">Cek prakiraan, tunggu sebentar, cari payung/jas hujan, sesuaikan rencana.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_7" value="distortion"><span class="opt-text">"Hujan ini pasti sengaja datang untuk menggagalkan rencanaku."</span></label>
+                    </div>
+                </div>
+
+                <!-- STEP 17 -->
+                <div class="step-pane" data-step="17">
+                    <span class="kicker">Keseharian · 8 dari 12</span>
+                    <h2>HP Lowbat di Perjalanan</h2>
+                    <div class="story">HP-mu mati di tengah perjalanan padahal kamu butuh untuk navigasi dan menghubungi orang.</div>
+                    <div class="options-grid" data-name="mm_8">
+                        <label class="option-card"><input type="radio" name="mm_8" value="deletion"><span class="opt-text">"Ah, biarkan saja, nanti juga sampai."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_8" value="generalization"><span class="opt-text">"HP-ku memang selalu mati di saat penting."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_8" value="healthy"><span class="opt-text">Cari colokan, tanya orang sekitar, siapkan rencana cadangan ke depannya.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_8" value="distortion"><span class="opt-text">"Pasti ada yang sengaja bikin HP-ku cepat habis."</span></label>
+                    </div>
+                </div>
+
+                <!-- STEP 18 -->
+                <div class="step-pane" data-step="18">
+                    <span class="kicker">Keseharian · 9 dari 12</span>
+                    <h2>Paket Online Terlambat</h2>
+                    <div class="story">Paket yang kamu tunggu-tunggu sudah lewat 3 hari dari estimasi, dan status pengiriman tidak jelas.</div>
+                    <div class="options-grid" data-name="mm_9">
+                        <label class="option-card"><input type="radio" name="mm_9" value="distortion"><span class="opt-text">"Kurirnya pasti sengaja menahan paketku."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_9" value="generalization"><span class="opt-text">"Paketku memang selalu terlambat datang."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_9" value="healthy"><span class="opt-text">Lacak status, hubungi layanan pelanggan, bersabar dengan update.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_9" value="deletion"><span class="opt-text">Diamkan saja, nanti juga datang sendiri.</span></label>
+                    </div>
+                </div>
+
+                <!-- STEP 19 -->
+                <div class="step-pane" data-step="19">
+                    <span class="kicker">Keseharian · 10 dari 12</span>
+                    <h2>Listrik Padam</h2>
+                    <div class="story">Listrik di rumah padam saat kamu sedang mengerjakan sesuatu yang penting.</div>
+                    <div class="options-grid" data-name="mm_10">
+                        <label class="option-card"><input type="radio" name="mm_10" value="distortion"><span class="opt-text">"Ini pasti disengaja untuk mengganggu aktivitasku."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_10" value="generalization"><span class="opt-text">"Di sini listrik memang selalu padam di waktu yang salah."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_10" value="healthy"><span class="opt-text">Cek meteran, hubungi PLN, siapkan penerangan cadangan, ubah rencana sementara.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_10" value="deletion"><span class="opt-text">Duduk diam menunggu, tidak berbuat apa-apa.</span></label>
+                    </div>
+                </div>
+
+                <!-- STEP 20 -->
+                <div class="step-pane" data-step="20">
+                    <span class="kicker">Keseharian · 11 dari 12</span>
+                    <h2>Kendaraan Mogok</h2>
+                    <div class="story">Kendaraan yang kamu tumpangi mogok di tengah jalan, padahal kamu harus segera sampai tujuan.</div>
+                    <div class="options-grid" data-name="mm_11">
+                        <label class="option-card"><input type="radio" name="mm_11" value="distortion"><span class="opt-text">"Kendaraan ini sengaja dibuat untuk menyusahkanku."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_11" value="generalization"><span class="opt-text">"Kendaraanku memang selalu bermasalah."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_11" value="healthy"><span class="opt-text">Cari bengkel terdekat, hubungi bantuan, cari transportasi alternatif.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_11" value="deletion"><span class="opt-text">Tinggalkan saja, tunggu sampai ada yang menolong.</span></label>
+                    </div>
+                </div>
+
+                <!-- STEP 21 -->
+                <div class="step-pane" data-step="21">
+                    <span class="kicker">Keseharian · 12 dari 12</span>
+                    <h2>Rencana Liburan Dibatalkan</h2>
+                    <div class="story">Rencana liburan yang sudah lama kamu susun tiba-tiba harus dibatalkan karena suatu hal di luar kendali.</div>
+                    <div class="options-grid" data-name="mm_12">
+                        <label class="option-card"><input type="radio" name="mm_12" value="generalization"><span class="opt-text">"Rencanaku memang selalu gagal."</span></label>
+                        <label class="option-card"><input type="radio" name="mm_12" value="deletion"><span class="opt-text">Biarkan saja, tidak melakukan apa-apa, larut dalam kekecewaan.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_12" value="healthy"><span class="opt-text">Terima situasinya, cari alternatif rencana, evaluasi apa yang bisa diperbaiki.</span></label>
+                        <label class="option-card"><input type="radio" name="mm_12" value="distortion"><span class="opt-text">"Pasti ada yang sengaja menggagalkan rencanaku."</span></label>
+                    </div>
+                </div>
+
+                <!-- STEP 22 -->
+                <div class="step-pane" data-step="22">
+                    <span class="kicker">Konfirmasi Akhir</span>
+                    <h2>Konfirmasi Data</h2>
+                    <p class="sub">Periksa kembali data berikut. Laporan profil gaya kerja akan dikirim ke HR Admin.</p>
+
+                    <div id="submit-preview"></div>
+
+                    <div class="note-card">
+                        <b>Catatan</b>
+                        Hasil lengkap profil gaya kerja &amp; rekomendasi pengembangan akan diproses HR Admin dan diarsipkan secara terintegrasi dengan sistem HRIS.
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-block btn-lg" id="btn-submit">Kirim Data</button>
+                    <div id="submit-status" style="margin-top:14px;font-size:12.5px;text-align:center;color:var(--ink-3);"></div>
+                </div>
+
+                <div class="err-msg" id="err-pane">Harap pilih salah satu opsi jawaban sebelum melanjutkan.</div>
+
+                <div class="nav-buttons" id="nav-bar">
+                    <button type="button" class="btn btn-line btn-sec" id="btn-prev" style="display:none;">Kembali</button>
+                    <button type="button" class="btn btn-primary" id="btn-next">Lanjutkan</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="wrap">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand">Life<i>Code</i></a>
+                    <p class="footer-desc">HR online assessment platform untuk memetakan gaya kerja &amp; kesejahteraan mental karyawan secara terukur dan terintegrasi dengan HRIS.</p>
+                </div>
+                <nav class="footer-links" aria-label="Menu halaman">
+                    <a href="index.html">Beranda</a>
+                    <a href="tentang.html">Tentang</a>
+                    <a href="privasi.html">Privasi</a>
+                    <a href="syarat.html">Syarat</a>
+                    <a href="kontak.html">Kontak</a>
+                </nav>
+            </div>
+            <p class="footer-legal">
+                © 2026 LifeCode · HR Online Assessment Platform. Seluruh hak dilindungi. Asesmen ini adalah alat refleksi dan pengembangan, bukan alat diagnosis klinis dan tidak dirancang untuk keputusan seleksi, promosi, atau sanksi.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            let currentStep = 1;
+            const totalSteps = 21;
+
+            const SPREADSHEET_ID = '1bk8OV-ne3boC3qimVr8oLd6YFH_yys-ePOEcYxetzso';
+            const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxlW4ppdcdiDeDoLL05djfbuHnsJXL661lbpjOtds8HE2OaKd61jpSgxKsalxOPwTKx/exec';
+
+            const stepPanes = document.querySelectorAll('.step-pane');
+            const btnNext = document.getElementById('btn-next');
+            const btnPrev = document.getElementById('btn-prev');
+            const navBar = document.getElementById('nav-bar');
+            const errPane = document.getElementById('err-pane');
+            const stepCounter = document.getElementById('step-counter');
+            const progressPercent = document.getElementById('progress-percent');
+            const progressFill = document.getElementById('progress-fill');
+
+            function calculateAge(birthdateStr) {
+                if (!birthdateStr) return '';
+                const birth = new Date(birthdateStr);
+                if (isNaN(birth.getTime())) return '';
+                const today = new Date();
+                let age = today.getFullYear() - birth.getFullYear();
+                const m = today.getMonth() - birth.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+                return age >= 0 ? age + ' tahun' : '';
+            }
+
+            // Masa kerja dihitung dari TAHUN bergabung saja
+            function calculateTenure(joinYearStr) {
+                if (!joinYearStr) return '';
+                const joinYear = parseInt(joinYearStr, 10);
+                if (isNaN(joinYear) || joinYear < 1900 || joinYear > 2100) return '';
+                const currentYear = new Date().getFullYear();
+                if (joinYear > currentYear) return '';
+                const years = currentYear - joinYear;
+                if (years === 0) return 'kurang dari 1 tahun';
+                return years + ' tahun';
+            }
+
+            const birthInput = document.getElementById('employee_birthdate');
+            const ageInput = document.getElementById('employee_age');
+            birthInput.addEventListener('change', () => {
+                ageInput.value = calculateAge(birthInput.value);
+            });
+            birthInput.addEventListener('input', () => {
+                ageInput.value = calculateAge(birthInput.value);
+            });
+
+            const joinYearInput = document.getElementById('join_year');
+            const tenureInput = document.getElementById('tenure');
+            joinYearInput.addEventListener('change', () => {
+                tenureInput.value = calculateTenure(joinYearInput.value);
+            });
+            joinYearInput.addEventListener('input', () => {
+                tenureInput.value = calculateTenure(joinYearInput.value);
+            });
+
+            document.querySelectorAll('.option-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const radio = this.querySelector('input[type="radio"]');
+                    if (radio) {
+                        radio.checked = true;
+                        const grid = this.closest('.options-grid');
+                        if (grid) grid.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+                        this.classList.add('selected');
+                        errPane.style.display = 'none';
+                    }
+                });
+            });
+
+            function updateProgress() {
+                if (currentStep > totalSteps) {
+                    stepCounter.textContent = 'Selesai';
+                    progressPercent.textContent = '100%';
+                    progressFill.style.width = '100%';
+                    return;
+                }
+                stepCounter.textContent = `Langkah ${currentStep} dari ${totalSteps}`;
+                const pct = Math.round(((currentStep - 1) / totalSteps) * 100);
+                progressPercent.textContent = `${pct}%`;
+                progressFill.style.width = `${pct}%`;
+            }
+
+            function validateStep(step) {
+                if (step === 1) {
+                    const name = document.getElementById('employee_name').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const pos = document.getElementById('position').value.trim();
+                    const bdate = document.getElementById('employee_birthdate').value.trim();
+                    const joinYearStr = document.getElementById('join_year').value.trim();
+                    const age = document.getElementById('employee_age').value;
+                    const tenure = document.getElementById('tenure').value;
+                    if (!name || !phone || !pos || !bdate || !joinYearStr) {
+                        errPane.textContent = 'Silakan lengkapi nama, nomor telepon, jabatan, tanggal lahir, dan tahun bergabung.';
+                        errPane.style.display = 'block';
+                        return false;
+                    }
+                    if (!/^[0-9+\-\s()]{8,20}$/.test(phone)) {
+                        errPane.textContent = 'Format nomor telepon tidak valid. Gunakan angka, spasi, tanda +, atau -.';
+                        errPane.style.display = 'block';
+                        return false;
+                    }
+                    const joinYear = parseInt(joinYearStr, 10);
+                    const currentYear = new Date().getFullYear();
+                    if (isNaN(joinYear) || joinYear < 1970 || joinYear > currentYear) {
+                        errPane.textContent = 'Tahun bergabung tidak valid. Masukkan tahun antara 1970 dan ' + currentYear + '.';
+                        errPane.style.display = 'block';
+                        return false;
+                    }
+                    if (!age || !tenure) {
+                        errPane.textContent = 'Usia / masa kerja tidak dapat dihitung. Periksa kembali data.';
+                        errPane.style.display = 'block';
+                        return false;
+                    }
+                } else if (step >= 2 && step <= 9) {
+                    const pane = document.querySelector(`.step-pane[data-step="${step}"]`);
+                    const grids = pane.querySelectorAll('.options-grid');
+                    for (let g of grids) {
+                        const name = g.getAttribute('data-name');
+                        const checked = pane.querySelector(`input[name="${name}"]:checked`);
+                        if (!checked) {
+                            errPane.textContent = 'Harap jawab kedua pertanyaan.';
+                            errPane.style.display = 'block';
+                            return false;
+                        }
+                    }
+                } else if (step >= 10 && step <= 21) {
+                    const pane = document.querySelector(`.step-pane[data-step="${step}"]`);
+                    const g = pane.querySelector('.options-grid');
+                    const name = g.getAttribute('data-name');
+                    const checked = pane.querySelector(`input[name="${name}"]:checked`);
+                    if (!checked) {
+                        errPane.textContent = 'Harap pilih salah satu opsi jawaban.';
+                        errPane.style.display = 'block';
+                        return false;
+                    }
+                }
+                errPane.style.display = 'none';
+                return true;
+            }
+
+            function showStep(step) {
+                stepPanes.forEach(pane => {
+                    pane.classList.remove('active');
+                    if (parseInt(pane.getAttribute('data-step')) === step) pane.classList.add('active');
+                });
+                btnPrev.style.display = step > 1 && step <= totalSteps ? 'inline-flex' : 'none';
+                if (step > totalSteps) {
+                    navBar.style.display = 'none';
+                    calculateAndFillPreview();
+                } else {
+                    navBar.style.display = 'flex';
+                    btnNext.textContent = (step === totalSteps) ? 'Selesai & Lanjut' : 'Lanjutkan';
+                }
+                updateProgress();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            btnNext.addEventListener('click', () => {
+                if (validateStep(currentStep)) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            });
+            btnPrev.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            });
+
+            function escapeHtml(s) {
+                return String(s || '').replace(/[&<>"']/g, c => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                })[c]);
+            }
+
+            function calculateResults() {
+                const empName = document.getElementById('employee_name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const dept = document.getElementById('department').value;
+                const position = document.getElementById('position').value.trim();
+                const age = document.getElementById('employee_age').value;
+                const tenure = document.getElementById('tenure').value;
+                const bdate = document.getElementById('employee_birthdate').value;
+                const joinYear = document.getElementById('join_year').value;
+
+                let healthyCount = 0;
+                const mmBreakdown = {
+                    healthy: 0,
+                    generalization: 0,
+                    deletion: 0,
+                    distortion: 0
+                };
+                for (let i = 1; i <= 12; i++) {
+                    const val = document.querySelector(`input[name="mm_${i}"]:checked`)?.value;
+                    if (val) {
+                        mmBreakdown[val] = (mmBreakdown[val] || 0) + 1;
+                        if (val === 'healthy') healthyCount++;
+                    }
+                }
+                const healthyScorePct = Math.round((healthyCount / 12) * 100);
+
+                const emotions = [];
+                const responses = [];
+                for (let i = 1; i <= 8; i++) {
+                    const e = document.querySelector(`input[name="emo_${i}"]:checked`)?.value;
+                    const r = document.querySelector(`input[name="resp_${i}"]:checked`)?.value;
+                    if (e) emotions.push(e);
+                    if (r) responses.push(r);
+                }
+
+                let archetype = "The Developing Professional";
+                let subTitle = "Masih Bertumbuh, Butuh Dukungan & Konsistensi";
+                if (healthyScorePct >= 75) {
+                    archetype = "The Resilient Achiever";
+                    subTitle = "Tangguh, Adaptif, dan Berorientasi Pertumbuhan";
+                } else if (mmBreakdown.distortion >= 4) {
+                    archetype = "The Anxious Performer";
+                    subTitle = "Cemas Berlebihan & Rentan Overthinking";
+                } else if (mmBreakdown.generalization >= 4) {
+                    archetype = "The Overwhelmed Reactor";
+                    subTitle = "Cenderung Menyamaratakan & Mudah Burnout";
+                }
+
+                const uniqEmo = [...new Set(emotions)];
+                const uniqResp = [...new Set(responses)];
+                const callout = `Karyawan ${empName} (${position}, ${dept}, masa kerja ${tenure}) memiliki skor Mindset Sehat sebesar ${healthyScorePct}% (${healthyCount}/12). Dominasi respons saat tertekan adalah ${uniqEmo.slice(0,3).join(', ')} dengan kecenderungan tindakan ${uniqResp.slice(0,2).join(', ')}.`;
+                const commGuide = `Rekomendasi pengembangan untuk ${empName}:
+- Validasi perasaan diri sebelum merespons situasi sulit.
+- Beri jeda 10 detik sebelum merespons saat stres atau kesal.
+- Fokus pada satu prioritas utama, hindari multitasking berlebihan.
+- Berikan apresiasi spesifik pada orang di sekitar atas kontribusi mereka.
+- Sediakan waktu istirahat 15 menit setiap hari untuk recharge mental.
+- Diskusikan beban aktivitas dengan atasan / orang terdekat secara berkala.`;
+
+                const rawAnswers = {};
+                for (let i = 1; i <= 8; i++) {
+                    rawAnswers['emo_' + i] = document.querySelector(`input[name="emo_${i}"]:checked`)?.value || '';
+                    rawAnswers['resp_' + i] = document.querySelector(`input[name="resp_${i}"]:checked`)?.value || '';
+                }
+                for (let i = 1; i <= 12; i++) {
+                    rawAnswers['mm_' + i] = document.querySelector(`input[name="mm_${i}"]:checked`)?.value || '';
+                }
+
+                return {
+                    submitted_at: new Date().toISOString(),
+                    spreadsheet_id: SPREADSHEET_ID,
+                    employee_name: empName,
+                    phone: phone,
+                    department: dept,
+                    position: position,
+                    employee_age: age,
+                    tenure: tenure,
+                    employee_birthdate: bdate,
+                    join_year: joinYear,
+                    join_date: joinYear, // kompatibilitas kolom sheet lama
+                    archetype,
+                    subtitle: subTitle,
+                    healthy_score: healthyScorePct,
+                    healthy_count: healthyCount,
+                    total_mm: 12,
+                    mm_breakdown: mmBreakdown,
+                    emotions: uniqEmo,
+                    responses: uniqResp,
+                    callout,
+                    comm_guide: commGuide,
+                    ...rawAnswers
+                };
+            }
+
+            function calculateAndFillPreview() {
+                const r = calculateResults();
+                window.__assessmentResults = r;
+                document.getElementById('submit-preview').innerHTML = `
+      <div class="preview-row"><span class="preview-label">Nama Karyawan</span><span class="preview-value">${escapeHtml(r.employee_name)}</span></div>
+      <div class="preview-row"><span class="preview-label">No. Telepon</span><span class="preview-value">${escapeHtml(r.phone)}</span></div>
+      <div class="preview-row"><span class="preview-label">Departemen</span><span class="preview-value">${escapeHtml(r.department)}</span></div>
+      <div class="preview-row"><span class="preview-label">Jabatan</span><span class="preview-value">${escapeHtml(r.position)}</span></div>
+      <div class="preview-row"><span class="preview-label">Usia</span><span class="preview-value">${escapeHtml(r.employee_age)}</span></div>
+      <div class="preview-row"><span class="preview-label">Tahun Bergabung</span><span class="preview-value">${escapeHtml(r.join_year)}</span></div>
+      <div class="preview-row"><span class="preview-label">Masa Kerja</span><span class="preview-value">${escapeHtml(r.tenure)}</span></div>
+      <div class="preview-row"><span class="preview-label">Profil</span><span class="preview-value accent">${escapeHtml(r.archetype)}</span></div>
+      <div class="preview-row"><span class="preview-label">Skor Mindset</span><span class="preview-value accent">${r.healthy_score}% (${r.healthy_count}/12)</span></div>
+    `;
+            }
+
+            document.getElementById('btn-submit').onclick = function() {
+                const btn = this;
+                const statusEl = document.getElementById('submit-status');
+                const results = window.__assessmentResults;
+                if (!results) {
+                    statusEl.textContent = 'Data tidak ditemukan. Silakan muat ulang halaman.';
+                    statusEl.style.color = '#B91C1C';
+                    return;
+                }
+                btn.disabled = true;
+                statusEl.textContent = 'Mengirim laporan ke HR Admin...';
+                statusEl.style.color = 'var(--ink-3)';
+
+                fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'text/plain;charset=utf-8'
+                        },
+                        body: JSON.stringify(results)
+                    })
+                    .then(() => {
+                        setTimeout(() => {
+                            document.getElementById('submit-preview').innerHTML = `
+          <div class="success-card">
+            <div class="success-icon">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>Laporan Terkirim</h3>
+            <p>Laporan asesmen <b>${escapeHtml(results.employee_name)}</b> telah dikirim ke HR Admin. Ringkasan diterima via email, data lengkap masuk ke dashboard HRIS.</p>
+            <p class="success-meta">Terima kasih telah meluangkan waktu untuk refleksi ini.</p>
+          </div>`;
+                            btn.style.display = 'none';
+                            statusEl.textContent = '';
+                        }, 1200);
+                    })
+                    .catch(err => {
+                        btn.disabled = false;
+                        statusEl.textContent = 'Gagal mengirim. Periksa koneksi lalu coba lagi.';
+                        statusEl.style.color = '#B91C1C';
+                        console.error(err);
+                    });
+            };
+        })();
+    </script>
+</body>
+
+</html>

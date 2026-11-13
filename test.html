@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LifeCode — Emotional Assessment untuk Kinerja Organisasi</title>
+<meta name="description" content="Emotional assessment berbasis pola bahasa dengan Leadership Insight Assistant untuk analisis emosi tim. Dirancang sesuai organisasi Anda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B1324;--ink-2:#334155;--ink-3:#64748B;--ink-4:#94A3B8;
+  --bg:#F7F8FC;--surface:#fff;--surface-2:#EEF1F8;--line:#E2E7F1;--line-2:#CBD3E3;
+  --navy:#0B1324;--navy-2:#131D38;
+  --indigo:#2F44C8;--indigo-h:#2535A8;--indigo-soft:#E9ECFB;
+  --mint:#14B8A6;--mint-d:#0F8F82;--mint-soft:#E3F6F3;--mint-l:#7EE0D3;
+  --amber:#B7791F;--amber-soft:#FEF6E7;
+  --r:14px;--r-lg:22px;--r-xl:30px;
+  --f:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --fm:'JetBrains Mono',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font-family:inherit}
+svg{display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.section{padding:104px 0}
+.section.tight{padding:72px 0}
+@media(max-width:720px){.section{padding:68px 0}.section.tight{padding:52px 0}}
+
+/* type */
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo);margin-bottom:14px}
+.h2{font-size:clamp(28px,3.6vw,42px);line-height:1.15;font-weight:800;letter-spacing:-.025em;text-wrap:balance}
+.lead{font-size:17px;color:var(--ink-3);max-width:620px;margin-top:16px}
+.head{margin-bottom:56px}
+.head.center{text-align:center}.head.center .lead{margin-left:auto;margin-right:auto}
+@media(max-width:720px){.head{margin-bottom:36px}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:12px 22px;border-radius:12px;border:1px solid transparent;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;transition:.18s;white-space:nowrap;line-height:1.2}
+.btn:focus-visible{outline:3px solid rgba(47,68,200,.4);outline-offset:2px}
+.btn-primary{background:var(--indigo);color:#fff}.btn-primary:hover{background:var(--indigo-h);transform:translateY(-1px)}
+.btn-light{background:#fff;color:var(--navy)}.btn-light:hover{background:var(--surface-2)}
+.btn-ghost{background:transparent;color:inherit;border-color:rgba(255,255,255,.28)}.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.btn-line{background:transparent;color:var(--ink);border-color:var(--line-2)}.btn-line:hover{background:var(--surface)}
+.btn-sm{min-height:38px;padding:8px 16px;font-size:14px;border-radius:10px}
+.btn-lg{min-height:54px;padding:15px 30px;font-size:16px;border-radius:14px}
+.btn-block{width:100%}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,19,36,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-in{height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-size:21px;font-weight:800;letter-spacing:-.03em;color:#fff;text-decoration:none}
+.brand i{font-style:normal;color:var(--mint-l)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.72);text-decoration:none;transition:.15s}
+.nav-links a:hover{color:#fff}
+@media(max-width:960px){.nav-links{display:none}}
+
+/* hero */
+.hero{background:radial-gradient(900px 480px at 85% -10%,rgba(47,68,200,.45),transparent 60%),radial-gradient(700px 420px at 0% 100%,rgba(20,184,166,.18),transparent 60%),var(--navy);color:#fff;padding:88px 0 96px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:48px}.hero{padding:56px 0 64px}}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:100px;font-size:12.5px;font-weight:600;color:var(--mint-l);background:rgba(20,184,166,.12);border:1px solid rgba(126,224,211,.25);margin-bottom:26px}
+.pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--mint-l)}
+.hero h1{font-size:clamp(36px,5vw,58px);line-height:1.06;font-weight:800;letter-spacing:-.035em;text-wrap:balance;margin-bottom:22px}
+.hero h1 span{color:var(--mint-l)}
+.hero p{font-size:17.5px;color:rgba(255,255,255,.74);max-width:540px}
+.hero p+p{margin-top:12px}
+.hero p strong{color:#fff;font-weight:600}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.hero-facts{display:flex;gap:32px;flex-wrap:wrap;margin-top:44px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12)}
+.hero-facts div b{display:block;font-family:var(--fm);font-size:26px;font-weight:600;color:#fff;letter-spacing:-.03em;line-height:1.1}
+.hero-facts div span{font-size:12.5px;color:rgba(255,255,255,.6)}
+
+/* report card */
+.report{background:var(--surface);color:var(--ink);border-radius:var(--r-lg);padding:22px;box-shadow:0 40px 80px -30px rgba(0,0,0,.55)}
+.report-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.report-top b{display:block;font-size:13.5px;font-weight:700}
+.report-top small{font-size:11.5px;color:var(--ink-3)}
+.tag{font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.06em;padding:4px 9px;border-radius:6px;background:var(--amber-soft);color:var(--amber);white-space:nowrap}
+.tabs{display:flex;gap:4px;padding:4px;background:var(--surface-2);border-radius:11px;margin-bottom:16px}
+.tab{flex:1;padding:9px 6px;border:0;background:none;border-radius:8px;font-size:12px;font-weight:600;color:var(--ink-3);cursor:pointer;transition:.15s}
+.tab.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.tab:focus-visible{outline:2px solid var(--indigo)}
+.panel{display:none}.panel.on{display:block;animation:up .25s ease}
+@keyframes up{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.meta{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-3);background:var(--surface-2);padding:9px 12px;border-radius:9px;margin-bottom:16px}
+.meta b{color:var(--ink);font-weight:600}
+.dom-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3)}
+.dom{display:flex;align-items:baseline;gap:8px;margin:4px 0 16px}
+.dom b{font-family:var(--fm);font-size:36px;font-weight:600;color:var(--indigo);line-height:1;letter-spacing:-.03em}
+.dom span{font-size:13px;color:var(--ink-3)}
+.bar{margin-bottom:11px}
+.bar-r{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-2);margin-bottom:5px}
+.bar-r b{font-family:var(--fm);font-weight:600}
+.bar-t{height:6px;background:var(--surface-2);border-radius:6px;overflow:hidden}
+.bar-t i{display:block;height:100%;border-radius:6px;background:var(--amber)}
+.bar-t.g i{background:var(--mint-d)}
+.note{margin-top:16px;padding:12px 14px;font-size:12.5px;line-height:1.6;background:var(--indigo-soft);border-left:3px solid var(--indigo);border-radius:10px;color:#1E2C7A}
+.report-foot{margin-top:14px;font-size:11px;color:var(--ink-4);text-align:center}
+
+/* audience strip */
+.strip{background:var(--surface);border-bottom:1px solid var(--line);padding:28px 0}
+.strip-in{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.strip-in>span{font-size:13px;font-weight:600;color:var(--ink-3)}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{font-size:13px;font-weight:600;color:var(--ink-2);padding:8px 16px;border-radius:100px;background:var(--surface-2);border:1px solid var(--line)}
+
+/* approach */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:860px){.grid3{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:32px 28px}
+.num{display:inline-flex;font-family:var(--fm);font-size:11.5px;font-weight:600;color:var(--indigo);background:var(--indigo-soft);padding:4px 10px;border-radius:6px;margin-bottom:20px;letter-spacing:.04em}
+.card h3{font-size:19px;font-weight:700;line-height:1.3;letter-spacing:-.015em;margin-bottom:10px}
+.card p{font-size:14.5px;color:var(--ink-3);line-height:1.7}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:20px;background:var(--navy);color:#fff;border-radius:var(--r-lg);overflow:hidden}
+.stats div{padding:32px 28px;text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+.stats div:last-child{border:0}
+.stats b{display:block;font-family:var(--fm);font-size:38px;font-weight:600;color:var(--mint-l);letter-spacing:-.03em;line-height:1.1}
+.stats span{font-size:13px;color:rgba(255,255,255,.66)}
+@media(max-width:640px){.stats{grid-template-columns:1fr}.stats div{border-right:0;border-bottom:1px solid rgba(255,255,255,.1)}}
+
+/* method */
+.alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.steps::before{content:'';position:absolute;top:21px;left:6%;right:6%;height:2px;background:var(--line-2)}
+@media(max-width:900px){.steps{grid-template-columns:1fr;gap:28px}.steps::before{display:none}}
+.step{position:relative;padding:0 16px}
+@media(max-width:900px){.step{padding:0 0 0 64px}}
+.step-dot{position:relative;z-index:1;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:13px;font-weight:600;margin-bottom:20px;border:4px solid var(--surface)}
+@media(max-width:900px){.step-dot{position:absolute;left:0;top:0}}
+.step h4{font-size:16px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.step p{font-size:14px;color:var(--ink-3);line-height:1.65}
+.method-note{margin-top:48px;padding:22px 26px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);font-size:14.5px;color:var(--ink-2);display:flex;gap:16px;align-items:flex-start}
+.method-note svg{width:22px;height:22px;color:var(--indigo);flex-shrink:0;margin-top:2px}
+
+/* programme */
+.prog{display:grid;grid-template-columns:340px 1fr;gap:28px;align-items:start}
+@media(max-width:900px){.prog{grid-template-columns:1fr}}
+.prog-list{display:flex;flex-direction:column;gap:8px}
+@media(max-width:900px){.prog-list{flex-direction:row;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}.prog-list::-webkit-scrollbar{display:none}}
+.prog-btn{display:flex;gap:14px;align-items:center;text-align:left;width:100%;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);cursor:pointer;transition:.18s;color:var(--ink-2);font-size:15px;font-weight:600}
+@media(max-width:900px){.prog-btn{width:auto;white-space:nowrap;padding:12px 16px}.prog-btn small{display:none}}
+.prog-btn small{font-family:var(--fm);font-size:11px;color:var(--ink-4);font-weight:600}
+.prog-btn:hover{border-color:var(--line-2)}
+.prog-btn.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.prog-btn.on small{color:var(--mint-l)}
+.prog-btn:focus-visible{outline:3px solid rgba(47,68,200,.4);outline-offset:2px}
+.prog-detail{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:40px 38px;min-height:340px}
+@media(max-width:720px){.prog-detail{padding:28px 22px;min-height:0}}
+.prog-detail h3{font-size:25px;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:14px}
+.prog-detail p{font-size:15.5px;color:var(--ink-3);line-height:1.75;margin-bottom:24px}
+.prog-detail h5{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);margin-bottom:12px}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tags span{font-size:13px;font-weight:600;color:var(--indigo);background:var(--indigo-soft);padding:6px 13px;border-radius:100px}
+.prog-detail .out{margin-top:24px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-2)}
+.prog-detail .out b{color:var(--ink)}
+
+/* LIFE chat */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+@media(max-width:920px){.split{grid-template-columns:1fr;gap:44px}}
+.feat{list-style:none;margin:30px 0}
+.feat li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.feat li:last-child{border:0}
+.feat-i{width:38px;height:38px;border-radius:10px;background:var(--mint-soft);color:var(--mint-d);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.feat-i svg{width:18px;height:18px}
+.feat strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px}
+.feat span{font-size:14px;color:var(--ink-3)}
+.warn{padding:16px 18px;background:var(--amber-soft);border-left:3px solid var(--amber);border-radius:10px;font-size:13.5px;color:var(--ink-2);line-height:1.65}
+.warn strong{color:var(--ink)}
+.chat{max-width:390px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 36px 70px -30px rgba(11,19,36,.3)}
+.chat-h{display:flex;gap:12px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.chat-a{width:38px;height:38px;border-radius:50%;background:var(--indigo);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.chat-h strong{display:block;font-size:14.5px;line-height:1.2}
+.chat-h span{font-size:11.5px;color:var(--ink-3)}
+.chat-b{padding:18px 16px;background:var(--bg);display:flex;flex-direction:column;gap:10px}
+.msg{max-width:86%;padding:11px 14px;border-radius:15px;font-size:13px;line-height:1.55;background:var(--surface);border:1px solid var(--line)}
+.msg.u{align-self:flex-end;background:var(--indigo);border-color:var(--indigo);color:#fff;border-bottom-right-radius:4px}
+.msg.b{border-bottom-left-radius:4px}
+.msg em{color:var(--ink-3)}
+.chat-i{display:flex;align-items:center;gap:10px;padding:12px 16px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-4)}
+.chat-i span{flex:1}
+.chat-i div{width:32px;height:32px;border-radius:50%;background:var(--indigo);color:#fff;display:flex;align-items:center;justify-content:center}
+.chat-cap{text-align:center;font-size:11.5px;color:var(--ink-4);margin-top:14px}
+
+/* phases */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:900px){.grid4{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.grid4{grid-template-columns:1fr}}
+.grid4 .card{padding:28px 24px}
+.grid4 .card h3{font-size:16.5px}
+
+/* measure */
+.measure{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:var(--r-xl);padding:64px 56px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:900px){.measure{grid-template-columns:1fr;padding:40px 26px;gap:36px}}
+.measure .kicker{color:var(--mint-l)}
+.measure .h2{color:#fff}
+.measure p{color:rgba(255,255,255,.72);margin-top:16px;font-size:16px}
+.mlist{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.mlist{grid-template-columns:1fr}}
+.mlist div{padding:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px}
+.mlist b{display:block;font-size:14.5px;font-weight:700;margin-bottom:4px}
+.mlist span{font-size:12.5px;color:rgba(255,255,255,.62);line-height:1.5}
+
+/* principles */
+.grid3.p .card{display:flex;gap:16px;padding:26px 24px}
+.grid3.p svg{width:24px;height:24px;color:var(--mint-d);flex-shrink:0;margin-top:2px}
+.grid3.p h3{font-size:15.5px;margin-bottom:6px}
+.grid3.p p{font-size:13.5px}
+
+/* offer */
+.offer{display:grid;grid-template-columns:1.2fr 1fr;border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--line);background:var(--surface);box-shadow:0 40px 80px -36px rgba(11,19,36,.2)}
+@media(max-width:900px){.offer{grid-template-columns:1fr}}
+.offer-m{padding:52px 48px}
+@media(max-width:720px){.offer-m{padding:34px 24px}}
+.offer-m h3{font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin:18px 0 12px}
+.offer-m>p{font-size:15.5px;color:var(--ink-3);margin-bottom:30px}
+.inc{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;padding-top:28px;border-top:1px solid var(--line)}
+@media(max-width:520px){.inc{grid-template-columns:1fr}}
+.inc li{display:flex;gap:10px;font-size:14px;color:var(--ink-2);line-height:1.5}
+.inc svg{width:17px;height:17px;color:var(--mint-d);flex-shrink:0;margin-top:3px}
+.offer-s{background:var(--navy);color:#fff;padding:52px 44px;display:flex;flex-direction:column}
+@media(max-width:720px){.offer-s{padding:34px 24px}}
+.offer-s .kicker{color:var(--mint-l)}
+.offer-s h4{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:12px}
+.offer-s>p{font-size:14.5px;color:rgba(255,255,255,.72);margin-bottom:26px}
+.next{margin-top:auto;padding-top:26px;border-top:1px solid rgba(255,255,255,.14);list-style:none;display:flex;flex-direction:column;gap:12px}
+.offer-s .btn{margin-bottom:28px}
+.next li{display:flex;gap:14px;font-size:13.5px;color:rgba(255,255,255,.82)}
+.next b{font-family:var(--fm);font-size:11px;color:var(--mint-l);min-width:22px;padding-top:2px}
+
+/* faq */
+.faq{max-width:780px;margin:0 auto}
+.fi{border-bottom:1px solid var(--line)}.fi:first-child{border-top:1px solid var(--line)}
+.fq{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;background:none;border:0;text-align:left;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;line-height:1.5}
+.fq:hover{color:var(--indigo)}
+.fq svg{width:20px;height:20px;color:var(--ink-3);flex-shrink:0;transition:.25s}
+.fi.open .fq svg{transform:rotate(45deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.fi.open .fa{max-height:420px}
+.fa p{padding:0 0 22px;font-size:14.5px;color:var(--ink-3);line-height:1.75}
+
+/* cta */
+.cta{background:radial-gradient(600px 300px at 90% 0%,rgba(47,68,200,.5),transparent 65%),var(--navy);color:#fff;border-radius:var(--r-xl);padding:80px 40px;text-align:center}
+.cta h2{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.025em;line-height:1.15;max-width:660px;margin:0 auto 16px;text-wrap:balance}
+.cta p{font-size:17px;color:rgba(255,255,255,.74);max-width:540px;margin:0 auto 32px}
+@media(max-width:640px){.cta{padding:56px 24px}}
+
+/* footer */
+.footer{background:var(--navy);color:#fff;margin-top:96px;padding:56px 0 40px}
+.footer-top{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap}
+.footer-links a{font-size:14px;color:rgba(255,255,255,.68);text-decoration:none;transition:.15s}
+.footer-links a:hover{color:#fff}
+.footer-desc{font-size:13.5px;color:rgba(255,255,255,.55);max-width:520px;margin-top:10px}
+.footer-legal{padding-top:28px;font-size:12.5px;color:rgba(255,255,255,.45);line-height:1.8}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px}
+.modal.open{display:flex}
+.back{position:absolute;inset:0;background:rgba(11,19,36,.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.mp{position:relative;width:100%;max-width:580px;max-height:calc(100dvh - 48px);overflow-y:auto;background:var(--surface);border-radius:22px;padding:38px;box-shadow:0 40px 100px -20px rgba(0,0,0,.5);animation:up .3s ease}
+@media(max-width:560px){.modal{padding:0}.mp{max-width:none;height:100dvh;max-height:none;border-radius:0;padding:26px 20px}}
+.mh{display:flex;justify-content:space-between;gap:16px;margin-bottom:24px}
+.mh h3{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:6px}
+.mh p{font-size:14px;color:var(--ink-3)}
+.x{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink-3);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.x:hover{background:var(--surface-2)}.x svg{width:16px;height:16px}
+.ff{margin-bottom:16px}
+.ff label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:7px}
+.ff input,.ff select,.ff textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line-2);border-radius:10px;font:inherit;font-size:15px;color:var(--ink);background:#fff;transition:.15s}
+.ff input:focus,.ff select:focus,.ff textarea:focus{outline:0;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(47,68,200,.14)}
+.ff textarea{resize:none;min-height:84px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+.fn{font-size:12px;color:var(--ink-4);text-align:center;margin-top:14px}
+.ok{text-align:center;padding:16px 0}
+.ok-i{width:64px;height:64px;border-radius:50%;background:var(--mint-soft);color:var(--mint-d);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.ok-i svg{width:28px;height:28px}
+.ok h3{font-size:24px;font-weight:800;margin-bottom:10px}
+.ok p{font-size:14.5px;color:var(--ink-3);max-width:400px;margin:0 auto 24px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+
+/* ===== ALIGNMENT & RHYTHM REFINEMENT ===== */
+body{text-wrap:pretty}
+.h2,.card h3,.step h4{text-wrap:balance}
+
+/* nav: true 3-column alignment */
+.nav-in{display:grid;grid-template-columns:1fr auto 1fr;gap:24px}
+.nav-in .btn{justify-self:end}
+.nav-links{justify-content:center}
+@media(max-width:960px){.nav-in{grid-template-columns:1fr auto}}
+
+/* section heads: one consistent left-aligned system */
+.head{max-width:none;margin-bottom:56px}
+.head .lead{margin-left:0;margin-right:0}
+.head .h2{max-width:760px}
+
+/* hero */
+.hero-facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:48px}
+.hero-facts div{display:flex;flex-direction:column;gap:4px}
+.hero-facts div b{line-height:1}
+.panels{display:grid}
+.panels .panel{grid-area:1/1;visibility:hidden;display:block;animation:none}
+.panels .panel.on{visibility:visible}
+.report-top small{display:block;margin-top:2px}
+.note{margin-top:18px}
+@media(max-width:560px){
+  .hero-cta{flex-direction:column}.hero-cta .btn{width:100%}
+  .hero-facts{grid-template-columns:repeat(3,1fr);gap:16px}
+  .hero-facts div b{font-size:22px}
+}
+
+/* strip */
+.strip-in>span{flex-shrink:0}
+@media(max-width:720px){.strip-in{flex-direction:column;align-items:flex-start;gap:14px}}
+
+/* cards: uniform padding, tag and heading rhythm */
+.card{padding:32px 28px;display:flex;flex-direction:column;align-items:flex-start}
+.card .num{margin-bottom:20px}
+.card h3{margin-bottom:10px}
+.card p{margin:0}
+
+/* methodology timeline: dots left-aligned with text, line links dots only */
+.steps::before{display:none}
+.step{padding:0 28px 0 0}
+.step:not(:last-child)::after{content:'';position:absolute;top:21px;left:56px;right:12px;height:2px;background:var(--line-2)}
+.step-dot{margin-bottom:20px}
+.step h4{margin-bottom:8px}
+@media(max-width:900px){
+  .step{padding:0 0 0 64px;min-height:44px}
+  .step:not(:last-child)::after{top:48px;bottom:-26px;left:21px;right:auto;width:2px;height:auto}
+}
+.method-note{align-items:center}
+.method-note svg{margin-top:0}
+
+/* programme tabs */
+.prog-btn small{min-width:22px}
+.prog-btn{line-height:1.3}
+.prog-detail{min-height:0}
+
+/* feature rows: icon centred on the title block */
+.feat li{align-items:flex-start;gap:16px;padding:18px 0}
+.feat-i{margin-top:1px}
+.feat strong{line-height:1.4;margin-bottom:4px}
+.feat span{display:block;line-height:1.65}
+
+/* measure cards */
+.mlist div{display:flex;flex-direction:column;gap:6px;justify-content:flex-start}
+.mlist b{margin:0}
+.mlist span{font-size:13.5px;line-height:1.55}
+
+/* principles: tinted icon tile, same baseline as title */
+.grid3.p .card{flex-direction:row;align-items:flex-start;gap:16px;padding:26px 24px}
+.pi{width:44px;height:44px;border-radius:12px;background:var(--mint-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.grid3.p .pi svg{width:22px;height:22px;margin:0;color:var(--mint-d)}
+.grid3.p .card h3{font-size:16px;line-height:1.35;margin:0 0 6px;padding-top:2px}
+.grid3.p .card p{font-size:14px;line-height:1.65}
+
+/* offer */
+.inc li{align-items:flex-start;line-height:22px;gap:10px}
+.inc svg{width:18px;height:18px;margin-top:2px;flex-shrink:0}
+.offer-main-tag,.offer-m .num{align-self:flex-start}
+.offer-s{justify-content:center}
+.offer-s .btn{margin-bottom:32px}
+.next{margin-top:0}
+.next li{align-items:flex-start;line-height:1.5}
+.next b{min-width:26px;padding-top:1px}
+
+/* faq: two columns, sticky heading */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:start}
+.faq-head{margin-bottom:0;position:sticky;top:104px}
+.faq-head .lead{font-size:16px}
+.faq{max-width:none;margin:0}
+.fq{align-items:flex-start;padding:22px 0}
+.fq svg{margin-top:2px}
+@media(max-width:900px){.faq-grid{grid-template-columns:1fr;gap:36px}.faq-head{position:static}}
+
+/* cta + footer */
+.cta .btn{margin:0 auto}
+.footer-top{align-items:flex-start}
+.footer-links{align-items:center;padding-top:6px}
+@media(max-width:720px){.footer-links{gap:12px 24px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand">Life<i>Code</i></a>
+    <div class="nav-links">
+      <a href="#pendekatan">Pendekatan</a>
+      <a href="#metodologi">Metodologi</a>
+      <a href="#programme">Area Analisis</a>
+      <a href="#assistant">Insight Assistant</a>
+      <a href="#penawaran">Penawaran</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <button class="btn btn-light btn-sm" data-consult>Jadwalkan Konsultasi</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill">Emotional assessment untuk organisasi</span>
+      <h1>Pahami <span>pola emosi</span> yang memengaruhi kinerja tim Anda.</h1>
+      <p>LifeCode menyediakan emotional assessment berbasis pemetaan pola bahasa, disesuaikan dengan konteks, tantangan, dan target kinerja organisasi Anda.</p>
+      <p>Hasil seluruh tim dianalisis melalui <strong>Leadership Insight Assistant</strong>, sehingga pimpinan dapat menetapkan target dan prioritas berdasarkan data agregat, tanpa membuka identitas individu.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary btn-lg" data-consult>Jadwalkan Konsultasi</button>
+        <a href="#penawaran" class="btn btn-ghost btn-lg">Lihat Penawaran</a>
+      </div>
+      <div class="hero-facts">
+        <div><b>38</b><span>emosi, 10 kategori</span></div>
+        <div><b>8</b><span>emotional block utama</span></div>
+        <div><b>5 mnt</b><span>per karyawan</span></div>
+      </div>
+    </div>
+
+    <div class="report" aria-label="Contoh laporan individual">
+      <div class="report-top">
+        <div><b>Contoh Individual Report</b><small>Hanya dapat dilihat karyawan yang bersangkutan</small></div>
+        <span class="tag">ILUSTRASI</span>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Contoh per peran">
+        <button class="tab on" data-role="mgr" role="tab" aria-selected="true" type="button">Sales Manager</button>
+        <button class="tab" data-role="exec" role="tab" aria-selected="false" type="button">Sales Executive</button>
+        <button class="tab" data-role="ops" role="tab" aria-selected="false" type="button">Ops Supervisor</button>
+      </div>
+      <div class="panels">
+      <div class="panel on" data-panel="mgr" role="tabpanel">
+        <div class="meta"><span>Level</span><b>Manager · 4 tahun</b></div>
+        <div class="dom-label">Emosi dominan</div>
+        <div class="dom"><b>72</b><span>Frustrasi (dari 100)</span></div>
+        <div class="bar"><div class="bar-r"><span>Kecewa</span><b>58</b></div><div class="bar-t"><i style="width:58%"></i></div></div>
+        <div class="bar"><div class="bar-r"><span>Cemas</span><b>45</b></div><div class="bar-t"><i style="width:45%"></i></div></div>
+        <div class="bar"><div class="bar-r"><span>Ragu</span><b>39</b></div><div class="bar-t"><i style="width:39%"></i></div></div>
+        <div class="bar"><div class="bar-r"><span>Harapan</span><b>74</b></div><div class="bar-t g"><i style="width:74%"></i></div></div>
+        <div class="note"><strong>Arah pengembangan:</strong> coaching 1-on-1 untuk delegasi dan penetapan batas peran. Frustrasi meningkat saat tugas tim yang kurang optimal diambil alih.</div>
+      </div>
+      <div class="panel" data-panel="exec" role="tabpanel">
+        <div class="meta"><span>Level</span><b>Executive · 2 tahun</b></div>
+        <div class="dom-label">Emosi dominan</div>
+        <div class="dom"><b>68</b><span>Cemas (dari 100)</span></div>
+        <div class="bar"><div class="bar-r"><span>Kecewa</span><b>54</b></div><div class="bar-t"><i style="width:54%"></i></div></div>
+        <div class="bar"><div class="bar-r"><span>Ragu</span><b>47</b></div><div class="bar-t"><i style="width:47%"></i></div></div>
+        <div class="bar"><div class="bar-r"><span>Frustrasi</span><b>39</b></div><div class="bar-t"><i style="width:39%"></i></div></div>
+        <div class="bar"><div class="bar-r"><span>Harapan</span><b>81</b></div><div class="bar-t g"><i style="width:81%"></i></div></div>
+        <div class="note"><strong>Arah pengembangan:</strong> pelatihan ketahanan terhadap penolakan dan rutinitas persiapan sebelum menghubungi prospek baru.</div>
+      </div>
+      <div class="panel" data-panel="ops" role="tabpanel">
+        <div class="meta"><span>Level</span><b>Supervisor · 6 tahun</b></div>
+        <div class="dom-label">Emosi dominan</div>
+        <div class="dom"><b>64</b><span>Putus asa (dari 100)</span></div>
+        <div class="bar"><div class="bar-r"><span>Frustrasi</span><b>58</b></div><div class="bar-t"><i style="width:58%"></i></div></div>
+        <div class="bar"><div class="bar-r"><span>Cemas</span><b>51</b></div><div class="bar-t"><i style="width:51%"></i></div></div>
+        <div class="bar"><div class="bar-r"><span>Kecewa</span><b>47</b></div><div class="bar-t"><i style="width:47%"></i></div></div>
+        <div class="bar"><div class="bar-r"><span>Harapan</span><b>55</b></div><div class="bar-t g"><i style="width:55%"></i></div></div>
+        <div class="note"><strong>Arah pengembangan:</strong> pelacakan pencapaian kecil, protokol eskalasi untuk masalah berulang di lini produksi, dan peninjauan beban kerja per shift.</div>
+      </div>
+      </div>
+      <div class="report-foot">Data ilustratif, bukan hasil karyawan nyata.</div>
+    </div>
+  </div>
+</header>
+
+<!-- AUDIENCE -->
+<div class="strip">
+  <div class="wrap strip-in">
+    <span>Dirancang untuk fungsi dan tim berikut</span>
+    <div class="chips">
+      <span class="chip">HR &amp; People Culture</span>
+      <span class="chip">Sales &amp; Customer Service</span>
+      <span class="chip">Operasional &amp; Manufaktur</span>
+      <span class="chip">Manajemen &amp; Eksekutif</span>
+    </div>
+  </div>
+</div>
+
+<!-- PENDEKATAN -->
+<section class="section" id="pendekatan">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Pendekatan</div>
+      <h2 class="h2">Emotional Needs Analysis</h2>
+      <p class="lead">Kebutuhan pengembangan emosional diidentifikasi dari data, sehingga setiap keputusan pengembangan terhubung langsung dengan hasil kerja yang ingin dicapai.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><span class="num">01</span><h3>Identifikasi gap emosional</h3><p>Asesmen terukur memetakan 38 emosi dan 8 emotional block yang paling relevan terhadap kinerja.</p></div>
+      <div class="card"><span class="num">02</span><h3>Analisis pola performa</h3><p>Data emosional dihubungkan dengan indikator kinerja yang sudah Anda pantau agar pengembangan tepat sasaran.</p></div>
+      <div class="card"><span class="num">03</span><h3>Pengukuran dampak</h3><p>Baseline dan re-assessment berkala menunjukkan arah perubahan, dilaporkan dalam bahasa KPI yang dipahami manajemen.</p></div>
+    </div>
+    <div class="stats">
+      <div><b>38</b><span>emosi dalam 10 kategori</span></div>
+      <div><b>8</b><span>emotional block dominan</span></div>
+      <div><b>20</b><span>situasi kerja per asesmen</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGI -->
+<section class="section alt" id="metodologi">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Metodologi</div>
+      <h2 class="h2">Pemetaan emosi dari pola bahasa, bukan sekadar skala angka.</h2>
+      <p class="lead">LifeCode menganalisis cara seseorang menggambarkan pengalaman kerjanya, lalu memetakannya ke kerangka emosi yang konsisten sehingga profil yang dihasilkan lebih kontekstual.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-dot">01</div><h4>Asesmen 5 menit</h4><p>Karyawan merespons 20 situasi kerja yang menggambarkan pengalaman emosional terkini.</p></div>
+      <div class="step"><div class="step-dot">02</div><h4>Analisis pola bahasa</h4><p>Pilihan kata dan struktur respons dianalisis dengan kerangka linguistik-emosional LifeCode.</p></div>
+      <div class="step"><div class="step-dot">03</div><h4>Skoring kerangka</h4><p>Pola dipetakan ke 38 emosi dan 8 emotional block, dinormalisasi pada skala 0–100.</p></div>
+      <div class="step"><div class="step-dot">04</div><h4>Insight dan rekomendasi</h4><p>Karyawan menerima hasilnya sendiri. Pimpinan dan HR menelaah insight agregat melalui assistant.</p></div>
+    </div>
+    <div class="method-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <span>LifeCode adalah alat refleksi dan pengembangan, bukan alat diagnosis klinis. Hasilnya tidak dirancang untuk keputusan seleksi, promosi, atau sanksi.</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+<section class="section" id="programme">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Area analisis</div>
+      <h2 class="h2">Lima area analisis yang dapat disesuaikan.</h2>
+      <p class="lead">Interpretasi hasil disesuaikan dengan fungsi dan konteks kerja tim. Anda dapat memilih satu atau beberapa area sesuai prioritas organisasi.</p>
+    </div>
+    <div class="prog">
+      <div class="prog-list" role="tablist" aria-label="Area analisis" id="progList"></div>
+      <div class="prog-detail" id="progDetail" role="tabpanel" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSISTANT -->
+<section class="section alt" id="assistant">
+  <div class="wrap split">
+    <div>
+      <div class="kicker">Leadership Insight Assistant</div>
+      <h2 class="h2">Tanyakan kondisi emosional tim, dapatkan analisis untuk keputusan.</h2>
+      <p class="lead" style="margin-top:16px">Setelah karyawan menyelesaikan asesmen, pimpinan dan HR memperoleh akses ke asisten analisis yang menjawab pertanyaan dari <strong style="color:var(--ink)">data agregat tim</strong>, bukan dari data individu.</p>
+      <ul class="feat">
+        <li><div class="feat-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><strong>Analisis dengan bahasa sehari-hari</strong><span>Ajukan pertanyaan seperti "tim mana yang paling tertekan?" tanpa perlu membaca laporan teknis.</span></div></li>
+        <li><div class="feat-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><div><strong>Dasar penetapan target</strong><span>Rekomendasi prioritas yang dihubungkan dengan target kinerja yang ingin Anda capai.</span></div></li>
+        <li><div class="feat-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><strong>Ringkasan siap presentasi</strong><span>Insight dapat dirangkum untuk rapat manajemen atau laporan ke direksi.</span></div></li>
+        <li><div class="feat-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div><strong>Batas privasi bawaan</strong><span>Hanya tim dengan minimal 5 responden yang dapat dianalisis. Identitas individu tidak dapat ditanyakan.</span></div></li>
+      </ul>
+      <div class="warn"><strong>Bukan alat penilaian individu.</strong> Assistant ini mendukung pemahaman kondisi tim dan perencanaan pengembangan. Ia bukan layanan diagnosis klinis dan tidak untuk keputusan seleksi, promosi, atau sanksi.</div>
+    </div>
+    <div>
+      <div class="chat" aria-label="Contoh percakapan Leadership Insight Assistant">
+        <div class="chat-h"><div class="chat-a">L</div><div><strong>Leadership Insight Assistant</strong><span>Berdasarkan data agregat</span></div></div>
+        <div class="chat-b">
+          <div class="msg u">Apa emosi dominan di tim Sales kuartal ini?</div>
+          <div class="msg b">Dari 24 responden tim Sales, <strong>Cemas (68)</strong> paling dominan, terutama pada situasi prospek baru. Harapan tetap tinggi (81).</div>
+          <div class="msg u">Apa prioritas agar target Q1 tercapai?</div>
+          <div class="msg b">Dua prioritas: pelatihan ketahanan terhadap penolakan dan rutinitas persiapan pra-kontak. Mau saya susun ringkasan untuk rapat?</div>
+          <div class="msg u">Siapa yang paling cemas di tim itu?</div>
+          <div class="msg b">Saya hanya menyajikan data agregat tim. Identitas individu tidak tersedia.</div>
+        </div>
+        <div class="chat-i"><span>Ketik pertanyaan...</span><div>→</div></div>
+      </div>
+      <div class="chat-cap">Contoh percakapan ilustratif</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASES -->
+<section class="section">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Cara kerja</div>
+      <h2 class="h2">Dari asesmen karyawan hingga keputusan berbasis data.</h2>
+      <p class="lead">Alurnya sederhana dan konsisten, sementara interpretasinya disesuaikan dengan konteks organisasi Anda.</p>
+    </div>
+    <div class="grid4">
+      <div class="card"><span class="num">TAHAP 01</span><h3>Konsultasi &amp; Scoping</h3><p>Memetakan tujuan bisnis, tim yang akan dianalisis, dan target yang ingin dicapai.</p></div>
+      <div class="card"><span class="num">TAHAP 02</span><h3>Asesmen Karyawan</h3><p>Karyawan menyetujui tujuan asesmen, lalu mengisi tes 5 menit dan menerima hasilnya sendiri.</p></div>
+      <div class="card"><span class="num">TAHAP 03</span><h3>Analisis Agregat</h3><p>Hasil dikelompokkan per tim dan departemen, lalu dibuka melalui dashboard dan Leadership Insight Assistant.</p></div>
+      <div class="card"><span class="num">TAHAP 04</span><h3>Keputusan &amp; Tinjauan</h3><p>Pimpinan menetapkan prioritas dan target, dengan re-assessment opsional untuk melihat perubahan.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEASURE -->
+<section class="section tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="measure">
+      <div>
+        <div class="kicker">Pengukuran dampak</div>
+        <h2 class="h2">Perubahan diukur, bukan diasumsikan.</h2>
+        <p>Hasil asesmen pertama menjadi baseline. Re-assessment berkala memungkinkan Anda melihat arah perubahan, dengan indikator bisnis yang ditetapkan bersama sejak awal.</p>
+      </div>
+      <div class="mlist">
+        <div><b>Baseline emosional</b><span>Profil agregat per tim pada asesmen pertama</span></div>
+        <div><b>Tingkat partisipasi</b><span>Indikator kepercayaan terhadap asesmen</span></div>
+        <div><b>Indikator bisnis</b><span>Turnover, absensi, produktivitas, atau metrik lain pilihan Anda</span></div>
+        <div><b>Re-assessment (opsional)</b><span>Pembandingan hasil dari waktu ke waktu</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Privasi &amp; etika</div>
+      <h2 class="h2">Prinsip yang menjaga kepercayaan karyawan.</h2>
+      <p class="lead">Asesmen hanya bermanfaat jika karyawan merasa aman. Prinsip berikut berlaku di setiap penugasan.</p>
+    </div>
+    <div class="grid3 p">
+      <div class="card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><h3>Agregat secara default</h3><p>HR hanya melihat data agregat dari tim minimal 5 orang.</p></div></div>
+      <div class="card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><h3>Persetujuan sebelum asesmen</h3><p>Karyawan menerima penjelasan tujuan dan memberi persetujuan sebelum mengisi asesmen.</p></div></div>
+      <div class="card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><div><h3>Assistant tanpa identitas</h3><p>Assistant hanya menjawab dari data agregat. Identitas individu tidak dapat ditanyakan maupun ditampilkan.</p></div></div>
+      <div class="card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></span><div><h3>Bukan alat penilaian</h3><p>Hasil tidak digunakan untuk seleksi, promosi, atau sanksi karyawan.</p></div></div>
+      <div class="card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><div><h3>Data seperlunya</h3><p>Hanya data yang dibutuhkan asesmen yang dikumpulkan, sesuai prinsip UU Pelindungan Data Pribadi.</p></div></div>
+      <div class="card"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><div><h3>Eskalasi risiko tinggi</h3><p>Indikasi risiko tinggi diarahkan ke profesional berlisensi atau layanan EAP.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="section" id="penawaran">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Penawaran</div>
+      <h2 class="h2">Asesmen karyawan dan akses Leadership Insight Assistant.</h2>
+      <p class="lead">Cakupan dan penawaran disusun setelah konsultasi, berdasarkan jumlah karyawan dan kebutuhan analisis Anda.</p>
+    </div>
+    <div class="offer">
+      <div class="offer-m">
+        <span class="num">ASESMEN + INSIGHT ASSISTANT</span>
+        <h3>Dari tes karyawan menjadi analisis untuk pimpinan.</h3>
+        <p>Karyawan mengisi asesmen, sementara pimpinan dan HR memperoleh dashboard serta asisten analisis berbasis data agregat.</p>
+        <ul class="inc">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Asesmen 20 situasi per karyawan</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hasil individual untuk karyawan</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dashboard agregat per tim dan departemen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Akses Leadership Insight Assistant</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Rekomendasi prioritas dan target</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Briefing hasil bersama pimpinan dan HR</li>
+        </ul>
+      </div>
+      <div class="offer-s">
+        <div class="kicker">Mulai dari sini</div>
+        <h4>Konsultasi awal, 45 menit.</h4>
+        <p>Tanpa komitmen. Kami mendengarkan konteks organisasi Anda dan merekomendasikan cakupan yang paling sesuai.</p>
+        <button class="btn btn-light btn-block btn-lg" data-consult>Jadwalkan Konsultasi</button>
+        <ol class="next">
+          <li><b>01</b><span>Konsultasi dan scoping, 45 menit</span></li>
+          <li><b>02</b><span>Proposal dan penawaran</span></li>
+          <li><b>03</b><span>Asesmen karyawan dan aktivasi dashboard</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section alt" id="faq">
+  <div class="wrap faq-grid">
+    <div class="head faq-head">
+      <div class="kicker">FAQ</div>
+      <h2 class="h2">Pertanyaan yang sering diajukan.</h2>
+      <p class="lead">Tidak menemukan jawaban yang Anda cari? Diskusikan langsung dengan kami saat konsultasi awal.</p>
+      <button class="btn btn-line" style="margin-top:24px" data-consult type="button">Hubungi Kami</button>
+    </div>
+    <div class="faq">
+      <div class="fi"><button class="fq" type="button">Apa dasar metodologi LifeCode?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="fa"><p>LifeCode memakai pemetaan emosi berbasis pola bahasa, yaitu analisis cara seseorang menggambarkan pengalaman kerjanya. Pola tersebut dipetakan ke kerangka 38 emosi dalam 10 kategori yang dikembangkan LifeCode. Pendekatan ini memberi konteks lebih kaya dibanding kuesioner skala konvensional, dan berfungsi sebagai alat refleksi dan analisis, bukan alat diagnosis.</p></div></div>
+      <div class="fi"><button class="fq" type="button">Bagaimana Leadership Insight Assistant bekerja?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="fa"><p>Assistant menjawab pertanyaan pimpinan dan HR berdasarkan data agregat hasil asesmen, misalnya emosi dominan suatu tim, perbandingan antar-departemen, atau prioritas untuk mencapai target tertentu. Jawabannya bersifat analisis dan rekomendasi, bukan penilaian terhadap individu.</p></div></div>
+      <div class="fi"><button class="fq" type="button">Apakah pimpinan dapat melihat emosi karyawan tertentu?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="fa"><p>Tidak. Pimpinan dan HR hanya mengakses data agregat dari tim minimal 5 responden, dan assistant tidak menampilkan identitas individu. Hasil individual hanya diterima karyawan yang bersangkutan. Hasil asesmen juga tidak dirancang untuk keputusan seleksi, promosi, atau sanksi.</p></div></div>
+      <div class="fi"><button class="fq" type="button">Apakah LifeCode menggantikan psikolog atau konselor?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="fa"><p>Tidak. LifeCode bukan layanan diagnosis atau konseling klinis. Bila ada indikasi risiko tinggi, karyawan disarankan menghubungi profesional berlisensi atau layanan EAP perusahaan.</p></div></div>
+      <div class="fi"><button class="fq" type="button">Berapa lama prosesnya?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="fa"><p>Asesmen membutuhkan sekitar 5 menit per karyawan. Jadwal keseluruhan, mulai dari persiapan hingga dashboard aktif, ditentukan setelah konsultasi sesuai jumlah karyawan dan cakupan analisis.</p></div></div>
+      <div class="fi"><button class="fq" type="button">Apakah analisis dapat disesuaikan per industri?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="fa"><p>Ya. Kerangka asesmen konsisten, tetapi interpretasi dan rekomendasinya disesuaikan dengan konteks. Tim manufaktur dan tim kreatif tidak akan menerima rekomendasi yang sama meskipun skornya mirip.</p></div></div>
+      <div class="fi"><button class="fq" type="button">Apakah ada jumlah minimum karyawan?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="fa"><p>Insight agregat membutuhkan minimal 5 responden per tim. Untuk keseluruhan organisasi, kami umumnya bekerja dengan perusahaan berukuran 50 karyawan ke atas, namun terbuka untuk dibahas per kasus.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Mari petakan kondisi emosional tim Anda secara terukur.</h2>
+      <p>Konsultasi awal 45 menit tanpa komitmen. Kami mendengarkan konteks organisasi Anda dan merekomendasikan pendekatan yang paling sesuai.</p>
+      <button class="btn btn-light btn-lg" data-consult>Jadwalkan Konsultasi Awal</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (5 link) -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="#" class="brand">Life<i>Code</i></a>
+        <p class="footer-desc">Emotional assessment untuk organisasi yang ingin memahami dan meningkatkan kesehatan emosional tim secara terukur.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="about.html">Tentang</a>
+        <a href="contact.html">Kontak</a>
+        <a href="privacy.html">Kebijakan Privasi</a>
+        <a href="terms.html">Syarat &amp; Ketentuan</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </nav>
+    </div>
+    <div class="footer-legal">
+      LifeCode menyediakan layanan emotional assessment dan analisis untuk organisasi. Leadership Insight Assistant adalah asisten analisis berbasis data agregat, bukan layanan diagnosis klinis, konseling, atau layanan darurat. Untuk individu dengan risiko klinis tinggi, kami menyarankan menghubungi tenaga profesional berlisensi atau layanan EAP.<br>
+      © 2026 LifeCode. Seluruh hak dilindungi.
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt" aria-hidden="true">
+  <div class="back" data-close></div>
+  <div class="mp" id="mp">
+    <div class="mh">
+      <div><h3 id="mt">Jadwalkan Konsultasi Awal</h3><p>Sesi 45 menit tanpa komitmen. Ceritakan konteks organisasi Anda, kami akan menghubungi Anda untuk menentukan jadwal.</p></div>
+      <button class="x" type="button" aria-label="Tutup" data-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <form id="form">
+      <div class="row">
+        <div class="ff"><label for="name">Nama lengkap *</label><input id="name" required placeholder="Nama Anda" autocomplete="name"></div>
+        <div class="ff"><label for="role">Jabatan *</label><input id="role" required placeholder="HR Manager" autocomplete="organization-title"></div>
+      </div>
+      <div class="ff"><label for="email">Email kerja *</label><input type="email" id="email" required placeholder="nama@perusahaan.com" autocomplete="email"></div>
+      <div class="row">
+        <div class="ff"><label for="company">Perusahaan *</label><input id="company" required placeholder="PT ..." autocomplete="organization"></div>
+        <div class="ff"><label for="wa">WhatsApp</label><input type="tel" id="wa" placeholder="0812..." autocomplete="tel"></div>
+      </div>
+      <div class="row">
+        <div class="ff"><label for="size">Ukuran organisasi *</label>
+          <select id="size" required><option value="">Pilih...</option><option>50–100 karyawan</option><option>101–250 karyawan</option><option>251–500 karyawan</option><option>501–1000 karyawan</option><option>1000+ karyawan</option></select></div>
+        <div class="ff"><label for="interest">Area analisis</label>
+          <select id="interest"><option value="">Belum ditentukan</option><option>Leadership</option><option>Sales &amp; Frontline</option><option>Operations</option><option>Team Dynamics</option><option>HR &amp; Culture</option></select></div>
+      </div>
+      <div class="ff"><label for="msg">Tantangan utama yang ingin diselesaikan</label><textarea id="msg" placeholder="Contoh: turnover tinggi di tim sales, konflik antar-departemen"></textarea></div>
+      <button type="submit" class="btn btn-primary btn-block btn-lg" id="sub">Kirim Permintaan</button>
+      <p class="fn">Data Anda hanya digunakan untuk menjadwalkan konsultasi.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ====== KONFIGURASI: isi sebelum publish ====== */
+  var WA_NUMBER = '62XXXXXXXXXXX'; // nomor WhatsApp bisnis, format 62...
+
+  /* report tabs */
+  var tabs=document.querySelectorAll('.tab'),panels=document.querySelectorAll('.panel');
+  tabs.forEach(function(t){t.addEventListener('click',function(){
+    tabs.forEach(function(x){var on=x===t;x.classList.toggle('on',on);x.setAttribute('aria-selected',on)});
+    panels.forEach(function(p){p.classList.toggle('on',p.dataset.panel===t.dataset.role)});
+  })});
+
+  /* programme */
+  var P=[
+    {n:'Leadership',t:'Kepemimpinan & Manajemen',d:'Analisis agregat emosi pada level supervisor hingga manajer senior. Hasilnya membantu pimpinan melihat pola yang memengaruhi gaya kepemimpinan, pengambilan keputusan, dan kemampuan menggerakkan tim.',k:['Kesadaran emosional','Pengambilan keputusan','Motivasi tim','Delegasi'],o:'Peta emosi level manajerial dan prioritas pengembangan kepemimpinan.'},
+    {n:'Sales & Frontline',t:'Sales & Layanan Pelanggan',d:'Tim sales dan layanan pelanggan menghadapi penolakan dan target setiap hari. Analisis ini memetakan pola emosi yang memengaruhi konversi, ketahanan setelah penolakan, dan konsistensi performa.',k:['Ketahanan terhadap penolakan','Kecemasan pra-interaksi','Pola pemulihan','Empati pelanggan'],o:'Profil emosi tim, titik tekanan dalam proses penjualan, dan rekomendasi prioritas target.'},
+    {n:'Operations',t:'Operasional & Manufaktur',d:'Di lantai produksi, emosi yang tidak terkelola dapat berkaitan dengan insiden keselamatan, defect, dan turnover. Analisis ini memetakan pola kelelahan, frustrasi terhadap hambatan, dan ketegangan antar-shift.',k:['Stres terkait keselamatan','Pola kelelahan','Friksi antar-shift','Kapabilitas supervisor'],o:'Peta tekanan per shift dan rekomendasi penyesuaian beban kerja.'},
+    {n:'Team Dynamics',t:'Dinamika Tim & Antar-Departemen',d:'Kolaborasi yang sehat bertumpu pada kesadaran emosional bersama. Analisis ini memetakan pola emosi di balik konflik berulang, friksi antar-departemen, dan hambatan komunikasi.',k:['Pola konflik','Friksi lintas fungsi','Gaya komunikasi','Kepercayaan'],o:'Peta dinamika antar-tim dan area yang membutuhkan perhatian pimpinan.'},
+    {n:'HR & Culture',t:'HR & Budaya Organisasi',d:'Memberi tim HR gambaran emosional organisasi yang dapat dihubungkan dengan indikator seperti turnover, absensi, dan engagement, sebagai dasar menyusun program pengembangan.',k:['Turnover & retensi','Engagement','Tren antar-departemen','Perencanaan program'],o:'Dashboard agregat per departemen dan tren dari waktu ke waktu.'}
+  ];
+  var list=document.getElementById('progList'),det=document.getElementById('progDetail');
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function show(i){
+    list.querySelectorAll('.prog-btn').forEach(function(b,j){var on=i===j;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});
+    var p=P[i];
+    det.innerHTML='<h3>'+esc(p.t)+'</h3><p>'+esc(p.d)+'</p><h5>Fokus topik</h5><div class="tags">'+p.k.map(function(x){return '<span>'+esc(x)+'</span>'}).join('')+'</div><div class="out"><b>Output:</b> '+esc(p.o)+'</div>';
+  }
+  P.forEach(function(p,i){
+    var b=document.createElement('button');b.type='button';b.className='prog-btn';b.setAttribute('role','tab');
+    b.innerHTML='<small>0'+(i+1)+'</small>'+esc(p.n);
+    b.addEventListener('click',function(){show(i)});list.appendChild(b);
+  });
+  show(0);
+
+  /* faq */
+  document.querySelectorAll('.fq').forEach(function(q){q.addEventListener('click',function(){
+    var it=q.parentElement,was=it.classList.contains('open');
+    document.querySelectorAll('.fi').forEach(function(i){i.classList.remove('open')});
+    if(!was)it.classList.add('open');
+  })});
+
+  /* modal */
+  var modal=document.getElementById('modal'),form=document.getElementById('form'),mp=document.getElementById('mp'),sub=document.getElementById('sub');
+  function open(){modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(function(){document.getElementById('name').focus()},50)}
+  function close(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+  document.querySelectorAll('[data-consult]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();open()})});
+  document.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',close)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))close()});
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=function(id){return (document.getElementById(id).value||'').trim()};
+    var text='Halo LifeCode, saya ingin menjadwalkan konsultasi awal.\n\n'+
+      'Nama: '+v('name')+'\nJabatan: '+v('role')+'\nEmail: '+v('email')+'\nPerusahaan: '+v('company')+
+      '\nWhatsApp: '+(v('wa')||'-')+'\nUkuran organisasi: '+v('size')+'\nArea analisis: '+(v('interest')||'Belum ditentukan')+
+      '\nTantangan: '+(v('msg')||'-');
+    sub.disabled=true;sub.textContent='Membuka WhatsApp...';
+    window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(text),'_blank','noopener');
+    mp.innerHTML='<div class="ok"><div class="ok-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Terima kasih.</h3><p>Pesan Anda sudah disiapkan di WhatsApp. Silakan tekan kirim di sana agar tim LifeCode dapat segera menghubungi Anda.</p><button class="btn btn-primary" type="button" onclick="location.reload()">Tutup</button></div>';
+  });
+})();
+</script>
+</body>
+</html>
